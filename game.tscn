@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dn2n8oabjlkn3"]
+
+[node name="Game" type="Node2D" unique_id=1883686513]
+
+[node name="Link" type="Label" parent="." unique_id=1292826963]
+offset_left = 3.0
+offset_top = -60.0
+offset_right = 533.0
+offset_bottom = -37.0
+text = "https://www.gdquest.com/tutorial/godot/2d/tactical-rpg-movement/"
