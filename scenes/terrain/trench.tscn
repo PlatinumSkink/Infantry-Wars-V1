@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bo7oe1pauol3d"]
+
+[ext_resource type="Script" uid="uid://cuss0wbaxoxhr" path="res://scripts/terrain.gd" id="1_536tb"]
+[ext_resource type="Texture2D" uid="uid://cwflvb0480mxf" path="res://assets/PaintTerrain/Trench.png" id="2_536tb"]
+
+[node name="Trench" type="Node2D" unique_id=39435083]
+script = ExtResource("1_536tb")
+defense = 4
+hiding_defense = 4
+zero_defense_if_in_same_terrain = true
+movement_cost = Dictionary[int, float]({
+0: 1.0,
+1: 1.0,
+2: 1.0,
+3: 1.0
+})
+leave_cost = Dictionary[int, float]({
+0: 2.0,
+1: 99.0,
+2: 5.0
+})
+metadata/_custom_type_script = "uid://cuss0wbaxoxhr"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=332614463]
+texture = ExtResource("2_536tb")

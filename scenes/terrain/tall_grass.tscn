@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://usy0j13ucyby"]
+
+[ext_resource type="Script" uid="uid://cuss0wbaxoxhr" path="res://scripts/terrain.gd" id="1_6m6jd"]
+[ext_resource type="Texture2D" uid="uid://c6xd5rv7ytbrg" path="res://assets/PaintTerrain/TallGrass.png" id="2_6m6jd"]
+
+[node name="TallGrass" type="Node2D" unique_id=39435083]
+script = ExtResource("1_6m6jd")
+defense = 1
+hiding_defense = 2
+burnable = true
+fire_spread_chance = 30
+movement_cost = Dictionary[int, float]({
+0: 1.5,
+1: 2.0,
+2: 1.0,
+3: 1.0
+})
+metadata/_custom_type_script = "uid://cuss0wbaxoxhr"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=332614463]
+texture = ExtResource("2_6m6jd")

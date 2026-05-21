@@ -1,10 +1,11 @@
 [gd_scene format=4 uid="uid://dn2n8oabjlkn3"]
 
-[ext_resource type="Texture2D" uid="uid://dsgsm7f4yq03q" path="res://assets/Tiny Swords (Free Pack)/Terrain/Tileset/Tilemap_color1.png" id="1_uwrxv"]
-[ext_resource type="Script" uid="uid://58trghj762dh" path="res://scripts/game.gd" id="1_yqjtg"]
+[ext_resource type="Script" uid="uid://58trghj762dh" path="res://scripts/tile_map_layer_test.gd" id="1_pncg5"]
+[ext_resource type="Texture2D" uid="uid://dsgsm7f4yq03q" path="res://assets/Tiny Swords (Free Pack)/Terrain/Tileset/Tilemap_color1.png" id="2_ppc4v"]
+[ext_resource type="Texture2D" uid="uid://7ojey8136xtn" path="res://assets/PaintTerrain/Sand.png" id="3_ppc4v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yqjtg"]
-texture = ExtResource("1_uwrxv")
+texture = ExtResource("2_ppc4v")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -646,11 +647,17 @@ terrain_set_0/terrain_1/name = "Rock"
 terrain_set_0/terrain_1/color = Color(1, 0.4392157, 0.9529412, 1)
 sources/2 = SubResource("TileSetAtlasSource_yqjtg")
 
-[node name="Game" type="Node2D" unique_id=1730664160]
-script = ExtResource("1_yqjtg")
+[node name="TileMapLayerTest" type="Node2D" unique_id=1730664160]
+script = ExtResource("1_pncg5")
 
 [node name="Tilemap" type="Node2D" parent="." unique_id=1207147281]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Tilemap" unique_id=1142518544]
 tile_map_data = PackedByteArray("AAAAAAAAAgAAAAAAAAAAAAEAAgAAAAMAAAAAAAIAAgAAAAEAAAAAAAMAAgAAAAMAAAAAAAQAAgAKAAcAAAABAAQAAgALAAcAAAABAAMAAgADAAQAAAABAAIAAgADAAEAAAABAAEAAgAEAAIAAAABAAAAAgADAAAAAAACAAQAAgAMAAcAAAACAAMAAgADAAIAAAACAAIAAgAEAAQAAAACAAEAAgAEAAIAAAACAAAAAgABAAAAAAADAAAAAgAFAAAAAAADAAEAAgAFAAQAAAADAAIAAgAFAAQAAAADAAMAAgAFAAIAAAADAAQAAgAPAAcAAAAAAAUAAgAKAAgAAAABAAUAAgAOAAgAAAACAAUAAgAOAAgAAAADAAUAAgAPAAgAAAADAAYAAgAPAAkAAAACAAYAAgAOAAkAAAABAAYAAgAMAAkAAAAAAAYAAgAKAAkAAAA=")
 tile_set = SubResource("TileSet_lnu2h")
+
+[node name="zone" type="Sprite2D" parent="." unique_id=1770201472]
+modulate = Color(1, 1, 1, 0.39215687)
+position = Vector2(-65, -49)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_ppc4v")

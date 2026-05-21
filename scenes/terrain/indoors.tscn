@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bnj7g3m07pa8d"]
+
+[ext_resource type="Script" uid="uid://cuss0wbaxoxhr" path="res://scripts/terrain.gd" id="1_630qq"]
+[ext_resource type="Texture2D" uid="uid://builwsf7enuff" path="res://assets/PaintTerrain/Indoors.png" id="2_630qq"]
+
+[node name="Indoors" type="Node2D" unique_id=39435083]
+script = ExtResource("1_630qq")
+defense = 2
+hiding_defense = 3
+burnable = true
+zero_defense_if_in_same_terrain = true
+fire_spread_chance = 10
+movement_cost = Dictionary[int, float]({
+0: 1.0,
+1: 99.0,
+2: 99.0,
+3: 1.0
+})
+metadata/_custom_type_script = "uid://cuss0wbaxoxhr"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=332614463]
+texture = ExtResource("2_630qq")

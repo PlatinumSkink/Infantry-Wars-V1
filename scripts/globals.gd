@@ -31,3 +31,26 @@ enum Units {
 	A_Copter,
 	T_Copter,
 }
+
+enum Terrain {
+	Forest = 0,
+	Grass = 1,
+	Indoors = 2,
+	Mud = 3,
+	Road = 4,
+	Rock = 5,
+	Ruins = 6,
+	Sand = 7,
+	TallGrass = 8,
+	Thicket = 9,
+	Trench = 10,
+	Wasteland = 11,
+	Water = 12,
+}
+
+enum MovementType {
+	Foot,
+	Wheel,
+	Treads,
+	Flying,
+}

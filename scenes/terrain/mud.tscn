@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cw80y7sg026sc"]
+
+[ext_resource type="Script" uid="uid://cuss0wbaxoxhr" path="res://scripts/terrain.gd" id="1_4qur5"]
+[ext_resource type="Texture2D" uid="uid://xdmgarbxc7u8" path="res://assets/PaintTerrain/Mud.png" id="2_4qur5"]
+
+[node name="Mud" type="Node2D" unique_id=39435083]
+script = ExtResource("1_4qur5")
+movement_cost = Dictionary[int, float]({
+0: 2.0,
+1: 4.0,
+2: 1.0,
+3: 1.0
+})
+leave_cost = Dictionary[int, float]({
+0: 2.0,
+1: 4.0
+})
+metadata/_custom_type_script = "uid://cuss0wbaxoxhr"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=332614463]
+texture = ExtResource("2_4qur5")

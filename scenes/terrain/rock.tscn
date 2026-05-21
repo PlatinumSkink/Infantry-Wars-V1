@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://be4ale1rsdgd1"]
+
+[ext_resource type="Script" uid="uid://cuss0wbaxoxhr" path="res://scripts/terrain.gd" id="1_4f4bo"]
+[ext_resource type="Texture2D" uid="uid://dc7bbktwawovo" path="res://assets/PaintTerrain/Rock.png" id="2_4f4bo"]
+
+[node name="Rock" type="Node2D" unique_id=39435083]
+script = ExtResource("1_4f4bo")
+movement_cost = Dictionary[int, float]({
+0: 99.0,
+1: 99.0,
+2: 99.0,
+3: 1.0
+})
+metadata/_custom_type_script = "uid://cuss0wbaxoxhr"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=332614463]
+texture = ExtResource("2_4f4bo")
