@@ -1,6 +1,7 @@
 class_name Terrain
 extends Node2D
 
+@export var terrain_type: Global.Terrain
 @export var defense: int = 0
 @export var hiding_defense: int = 0
 @export var burnable: bool

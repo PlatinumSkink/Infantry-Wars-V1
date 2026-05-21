@@ -5,9 +5,10 @@
 
 [node name="Thicket" type="Node2D" unique_id=39435083]
 script = ExtResource("1_hhjft")
+terrain_type = 9
 burnable = true
 fire_spread_chance = 20
-movement_cost = Dictionary[int, float]({
+movement_cost = Dictionary[Variant, float]({
 0: 99.0,
 1: 99.0,
 2: 99.0,
@@ -17,3 +18,4 @@ metadata/_custom_type_script = "uid://cuss0wbaxoxhr"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=332614463]
 texture = ExtResource("2_hhjft")
+centered = false

@@ -35,22 +35,60 @@ var test_map = [
 	[2, 1, 0],
 	[1, 1, 1],
 ]
+var map_width: int = 0
+var map_height: int = 0
+var tile_map = []
 
 var pixels: int = 128
-var plus: int = 200
+
+@onready var zone: Sprite2D = $Zone
 
 func _ready() -> void:
 	build_map(test_map)
 
 func build_map(map) -> void:
+	map_height = len(map)
+	map_width = len(map[0])
 	var y: int = 0
 	for row in map:
 		var x: int = 0
+		var new_row = []
 		for tile in row:
 			var resource = terrain_dictionary[tile]
 			var instance = resource.instantiate()
 			instance.position = Vector2(x * pixels, y * pixels)
 			add_child(instance)
-			print("x: " + str(x) + ". y: " + str(y))
+			new_row.append(instance)
 			x += 1
 		y += 1
+		tile_map.append(new_row)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	var mousePos: Vector2 = get_global_mouse_position()
+	var x = floorf(mousePos.x / pixels)
+	var y = floorf(mousePos.y / pixels)
+	#if is_in_bounds(x, y):
+	zone.position = Vector2(x * pixels, y * pixels)
+	#else:
+		#zone.position.x = -500
+
+func get_mouse_grid_coordinate() -> Vector2:
+	var mousePos: Vector2 = get_global_mouse_position()
+	var x = floorf(mousePos.x / pixels)
+	var y = floorf(mousePos.y / pixels)
+	return Vector2(x, y)
+
+func is_in_bounds(x: int, y: int) -> bool:
+	return x < map_width && y < map_height && x > -1 && y > -1
+	
+
+func _input(event) -> void: # When an action happened.
+	if event.is_action_pressed("click"):
+		var grid_pos = get_mouse_grid_coordinate()
+		if is_in_bounds(grid_pos.x, grid_pos.y):
+			var terrain = tile_map[grid_pos.x][grid_pos.y]
+			print("terrain: " + str(terrain.terrain_type))
+		
+	if event.is_action_pressed("escape"):
+		get_tree().quit()

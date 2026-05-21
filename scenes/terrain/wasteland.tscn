@@ -5,8 +5,9 @@
 
 [node name="Wasteland" type="Node2D" unique_id=39435083]
 script = ExtResource("1_iw2v3")
+terrain_type = 11
 hiding_defense = 1
-movement_cost = Dictionary[int, float]({
+movement_cost = Dictionary[Variant, float]({
 0: 1.0,
 1: 1.5,
 2: 1.0,
@@ -16,3 +17,4 @@ metadata/_custom_type_script = "uid://cuss0wbaxoxhr"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=332614463]
 texture = ExtResource("2_iw2v3")
+centered = false

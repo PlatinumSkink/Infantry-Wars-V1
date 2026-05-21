@@ -5,12 +5,13 @@
 
 [node name="Indoors" type="Node2D" unique_id=39435083]
 script = ExtResource("1_630qq")
+terrain_type = 2
 defense = 2
 hiding_defense = 3
 burnable = true
 zero_defense_if_in_same_terrain = true
 fire_spread_chance = 10
-movement_cost = Dictionary[int, float]({
+movement_cost = Dictionary[Variant, float]({
 0: 1.0,
 1: 99.0,
 2: 99.0,
@@ -20,3 +21,4 @@ metadata/_custom_type_script = "uid://cuss0wbaxoxhr"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=332614463]
 texture = ExtResource("2_630qq")
+centered = false

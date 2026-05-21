@@ -1,6 +1,13 @@
 [gd_scene format=3 uid="uid://bedpgwfvmyevf"]
 
 [ext_resource type="Script" uid="uid://vpes2426bhp6" path="res://scripts/generated_map.gd" id="1_h5ye1"]
+[ext_resource type="Texture2D" uid="uid://7ojey8136xtn" path="res://assets/PaintTerrain/Sand.png" id="2_l1oju"]
 
 [node name="GeneratedMap" type="Node2D" unique_id=1884705217]
 script = ExtResource("1_h5ye1")
+
+[node name="Zone" type="Sprite2D" parent="." unique_id=242972540]
+modulate = Color(1, 1, 1, 0.39215687)
+z_index = 1
+texture = ExtResource("2_l1oju")
+centered = false

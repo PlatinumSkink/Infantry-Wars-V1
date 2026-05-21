@@ -5,16 +5,17 @@
 
 [node name="Trench" type="Node2D" unique_id=39435083]
 script = ExtResource("1_536tb")
+terrain_type = 10
 defense = 4
 hiding_defense = 4
 zero_defense_if_in_same_terrain = true
-movement_cost = Dictionary[int, float]({
+movement_cost = Dictionary[Variant, float]({
 0: 1.0,
 1: 1.0,
 2: 1.0,
 3: 1.0
 })
-leave_cost = Dictionary[int, float]({
+leave_cost = Dictionary[Variant, float]({
 0: 2.0,
 1: 99.0,
 2: 5.0
@@ -23,3 +24,4 @@ metadata/_custom_type_script = "uid://cuss0wbaxoxhr"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=332614463]
 texture = ExtResource("2_536tb")
+centered = false

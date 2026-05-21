@@ -5,11 +5,12 @@
 
 [node name="TallGrass" type="Node2D" unique_id=39435083]
 script = ExtResource("1_6m6jd")
+terrain_type = 8
 defense = 1
 hiding_defense = 2
 burnable = true
 fire_spread_chance = 30
-movement_cost = Dictionary[int, float]({
+movement_cost = Dictionary[Variant, float]({
 0: 1.5,
 1: 2.0,
 2: 1.0,
@@ -19,3 +20,4 @@ metadata/_custom_type_script = "uid://cuss0wbaxoxhr"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=332614463]
 texture = ExtResource("2_6m6jd")
+centered = false

@@ -5,14 +5,15 @@
 
 [node name="Sand" type="Node2D" unique_id=39435083]
 script = ExtResource("1_g2ogw")
+terrain_type = 7
 hiding_defense = 1
-movement_cost = Dictionary[int, float]({
+movement_cost = Dictionary[Variant, float]({
 0: 1.0,
 1: 3.0,
 2: 1.5,
 3: 1.0
 })
-leave_cost = Dictionary[int, float]({
+leave_cost = Dictionary[Variant, float]({
 1: 3.0,
 2: 1.5
 })
@@ -20,3 +21,4 @@ metadata/_custom_type_script = "uid://cuss0wbaxoxhr"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=332614463]
 texture = ExtResource("2_g2ogw")
+centered = false

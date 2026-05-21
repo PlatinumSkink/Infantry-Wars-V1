@@ -5,13 +5,14 @@
 
 [node name="Mud" type="Node2D" unique_id=39435083]
 script = ExtResource("1_4qur5")
-movement_cost = Dictionary[int, float]({
+terrain_type = 3
+movement_cost = Dictionary[Variant, float]({
 0: 2.0,
 1: 4.0,
 2: 1.0,
 3: 1.0
 })
-leave_cost = Dictionary[int, float]({
+leave_cost = Dictionary[Variant, float]({
 0: 2.0,
 1: 4.0
 })
@@ -19,3 +20,4 @@ metadata/_custom_type_script = "uid://cuss0wbaxoxhr"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=332614463]
 texture = ExtResource("2_4qur5")
+centered = false

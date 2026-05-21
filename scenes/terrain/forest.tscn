@@ -9,13 +9,13 @@ defense = 2
 hiding_defense = 3
 burnable = true
 fire_spread_chance = 20
-movement_cost = Dictionary[int, float]({
+movement_cost = Dictionary[Variant, float]({
 0: 1.5,
 1: 99.0,
 2: 3.0,
 3: 1.0
 })
-leave_cost = Dictionary[int, float]({
+leave_cost = Dictionary[Variant, float]({
 0: 1.5,
 2: 3.0
 })
@@ -23,3 +23,4 @@ metadata/_custom_type_script = "uid://cuss0wbaxoxhr"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=332614463]
 texture = ExtResource("2_cmrm6")
+centered = false

@@ -5,7 +5,8 @@
 
 [node name="Road" type="Node2D" unique_id=39435083]
 script = ExtResource("1_8y7ub")
-movement_cost = Dictionary[int, float]({
+terrain_type = 4
+movement_cost = Dictionary[Variant, float]({
 0: 1.0,
 1: 1.0,
 2: 1.0,
@@ -15,3 +16,4 @@ metadata/_custom_type_script = "uid://cuss0wbaxoxhr"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=332614463]
 texture = ExtResource("2_8y7ub")
+centered = false
