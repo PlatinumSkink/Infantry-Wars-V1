@@ -11,3 +11,7 @@ modulate = Color(1, 1, 1, 0.39215687)
 z_index = 1
 texture = ExtResource("2_l1oju")
 centered = false
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2041094251]
+anchor_mode = 0
+drag_vertical_enabled = true

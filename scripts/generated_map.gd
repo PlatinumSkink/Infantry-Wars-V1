@@ -14,6 +14,9 @@ const TRENCH = preload("uid://bo7oe1pauol3d")
 const WASTELAND = preload("uid://dmk0ogaalafow")
 const WATER = preload("uid://clov3pgyy2heg")
 
+@onready var camera_2d: Camera2D = $Camera2D
+@export var camera_speed: int = 500
+
 var terrain_dictionary: Dictionary[Globals.Terrain, Resource] = {
 	Globals.Terrain.Forest: FOREST,
 	Globals.Terrain.Grass: GRASS,
@@ -31,9 +34,14 @@ var terrain_dictionary: Dictionary[Globals.Terrain, Resource] = {
 }
 
 var test_map = [
-	[1, 1, 1],
-	[2, 1, 0],
-	[1, 1, 1],
+	[4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4],
+	[2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0],
+	[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+	[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+	[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+	[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+	[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+	[4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4],
 ]
 var map_width: int = 0
 var map_height: int = 0
@@ -64,14 +72,32 @@ func build_map(map) -> void:
 		tile_map.append(new_row)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	var mousePos: Vector2 = get_global_mouse_position()
 	var x = floorf(mousePos.x / pixels)
 	var y = floorf(mousePos.y / pixels)
-	#if is_in_bounds(x, y):
-	zone.position = Vector2(x * pixels, y * pixels)
-	#else:
-		#zone.position.x = -500
+	if is_in_bounds(x, y):
+		zone.position = Vector2(x * pixels, y * pixels)
+	else:
+		zone.position.x = -500
+	var viewport_size = get_viewport_rect().size
+	var twenty_percent_of_width = viewport_size / 5
+	if mousePos.x < twenty_percent_of_width.x + camera_2d.position.x:
+		camera_2d.position.x -= camera_speed * delta
+		if camera_2d.position.x < 0:
+			camera_2d.position.x = 0
+	if mousePos.y < twenty_percent_of_width.y + camera_2d.position.y:
+		camera_2d.position.y -= camera_speed * delta
+		if camera_2d.position.y < 0:
+			camera_2d.position.y = 0
+	if mousePos.x > viewport_size.x - twenty_percent_of_width.x + camera_2d.position.x:
+		camera_2d.position.x += camera_speed * delta
+		if camera_2d.position.x + viewport_size.x > map_width * pixels:
+			camera_2d.position.x = map_width * pixels - viewport_size.x
+	if mousePos.y  > viewport_size.y - twenty_percent_of_width.y + camera_2d.position.y:
+		camera_2d.position.y += camera_speed * delta
+		if camera_2d.position.y + viewport_size.y > map_height * pixels:
+			camera_2d.position.y = map_width * pixels - viewport_size.y
 
 func get_mouse_grid_coordinate() -> Vector2:
 	var mousePos: Vector2 = get_global_mouse_position()
