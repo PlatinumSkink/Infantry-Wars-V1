@@ -12,6 +12,6 @@ z_index = 1
 texture = ExtResource("2_l1oju")
 centered = false
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=2041094251]
-anchor_mode = 0
-drag_vertical_enabled = true
+[node name="Camera" type="Node2D" parent="." unique_id=419798172]
+
+[node name="Camera2D" type="Camera2D" parent="Camera" unique_id=2041094251]

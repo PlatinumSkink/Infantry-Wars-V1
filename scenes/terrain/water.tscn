@@ -9,7 +9,7 @@ terrain_type = 12
 defense = 1
 hiding_defense = 1
 disbles_attacking = true
-movement_cost = Dictionary[Variant, float]({
+movement_cost = Dictionary[int, float]({
 0: 2.0,
 1: 99.0,
 2: 99.0,
