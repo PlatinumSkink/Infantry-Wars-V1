@@ -1,8 +1,10 @@
 class_name PaintableMap
 extends Node2D
 
-@onready var tile_map_layer: TileMapLayer = $TileMapLayer
+@onready var tile_map_layer: TileMapLayer = $TerrainMap
 var tile_map = []
+# Left, Right, Up, Down
+# SE, NE, NW, SW
 
 func get_array():
 	var currentCell = Vector2(0,0)

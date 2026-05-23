@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cj4e246xs572y" path="res://scripts/paintable_map.gd" id="1_2s55i"]
 [ext_resource type="Texture2D" uid="uid://bpvhq17sgvd45" path="res://assets/PaintTerrain/InfantryWarsTiles.png" id="2_o3n0h"]
+[ext_resource type="TileSet" uid="uid://c1y3765uc6u1q" path="res://tilesets/cover_tileset.tres" id="3_38prr"]
+[ext_resource type="Texture2D" uid="uid://vg2u7h7h58bg" path="res://assets/PaintTerrain/Cover/type_of_cover_map.png" id="4_a3b3n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_38prr"]
 texture = ExtResource("2_o3n0h")
@@ -187,10 +189,141 @@ terrain_set_0/terrain_12/name = "Water"
 terrain_set_0/terrain_12/color = Color(0.46875, 0.25, 0.5, 1)
 sources/0 = SubResource("TileSetAtlasSource_38prr")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qoqmi"]
+texture = ExtResource("4_a3b3n")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_right_corner = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+0:0/0/terrains_peering_bit/bottom_left_corner = 0
+0:0/0/terrains_peering_bit/left_side = 0
+0:0/0/terrains_peering_bit/top_left_corner = 0
+0:0/0/terrains_peering_bit/top_side = 0
+0:0/0/terrains_peering_bit/top_right_corner = 0
+0:0/0/custom_data_0 = "Fence"
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 1
+1:0/0/terrains_peering_bit/right_side = 1
+1:0/0/terrains_peering_bit/bottom_right_corner = 1
+1:0/0/terrains_peering_bit/bottom_side = 1
+1:0/0/terrains_peering_bit/bottom_left_corner = 1
+1:0/0/terrains_peering_bit/left_side = 1
+1:0/0/terrains_peering_bit/top_left_corner = 1
+1:0/0/terrains_peering_bit/top_side = 1
+1:0/0/terrains_peering_bit/top_right_corner = 1
+1:0/0/custom_data_0 = "Stone Wall"
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 2
+2:0/0/terrains_peering_bit/right_side = 2
+2:0/0/terrains_peering_bit/bottom_right_corner = 2
+2:0/0/terrains_peering_bit/bottom_side = 2
+2:0/0/terrains_peering_bit/bottom_left_corner = 2
+2:0/0/terrains_peering_bit/left_side = 2
+2:0/0/terrains_peering_bit/top_left_corner = 2
+2:0/0/terrains_peering_bit/top_side = 2
+2:0/0/terrains_peering_bit/top_right_corner = 2
+2:0/0/custom_data_0 = "Sandbags"
+3:0/0 = 0
+3:0/0/terrain_set = 0
+3:0/0/terrain = 3
+3:0/0/terrains_peering_bit/right_side = 3
+3:0/0/terrains_peering_bit/bottom_right_corner = 3
+3:0/0/terrains_peering_bit/bottom_side = 3
+3:0/0/terrains_peering_bit/bottom_left_corner = 3
+3:0/0/terrains_peering_bit/left_side = 3
+3:0/0/terrains_peering_bit/top_left_corner = 3
+3:0/0/terrains_peering_bit/top_side = 3
+3:0/0/terrains_peering_bit/top_right_corner = 3
+3:0/0/custom_data_0 = "Bush"
+3:1/0 = 0
+3:1/0/terrain_set = 0
+3:1/0/terrain = 7
+3:1/0/terrains_peering_bit/right_side = 7
+3:1/0/terrains_peering_bit/bottom_right_corner = 7
+3:1/0/terrains_peering_bit/bottom_side = 7
+3:1/0/terrains_peering_bit/bottom_left_corner = 7
+3:1/0/terrains_peering_bit/left_side = 7
+3:1/0/terrains_peering_bit/top_left_corner = 7
+3:1/0/terrains_peering_bit/top_side = 7
+3:1/0/terrains_peering_bit/top_right_corner = 7
+3:1/0/custom_data_0 = "Reinforced Wall"
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/terrain = 6
+2:1/0/terrains_peering_bit/right_side = 6
+2:1/0/terrains_peering_bit/bottom_right_corner = 6
+2:1/0/terrains_peering_bit/bottom_side = 6
+2:1/0/terrains_peering_bit/bottom_left_corner = 6
+2:1/0/terrains_peering_bit/left_side = 6
+2:1/0/terrains_peering_bit/top_left_corner = 6
+2:1/0/terrains_peering_bit/top_side = 6
+2:1/0/terrains_peering_bit/top_right_corner = 6
+2:1/0/custom_data_0 = "Door"
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 5
+1:1/0/terrains_peering_bit/right_side = 5
+1:1/0/terrains_peering_bit/bottom_right_corner = 5
+1:1/0/terrains_peering_bit/bottom_side = 5
+1:1/0/terrains_peering_bit/bottom_left_corner = 5
+1:1/0/terrains_peering_bit/left_side = 5
+1:1/0/terrains_peering_bit/top_left_corner = 5
+1:1/0/terrains_peering_bit/top_side = 5
+1:1/0/terrains_peering_bit/top_right_corner = 5
+1:1/0/custom_data_0 = "Window"
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 4
+0:1/0/terrains_peering_bit/right_side = 4
+0:1/0/terrains_peering_bit/bottom_right_corner = 4
+0:1/0/terrains_peering_bit/bottom_side = 4
+0:1/0/terrains_peering_bit/bottom_left_corner = 4
+0:1/0/terrains_peering_bit/left_side = 4
+0:1/0/terrains_peering_bit/top_left_corner = 4
+0:1/0/terrains_peering_bit/top_side = 4
+0:1/0/terrains_peering_bit/top_right_corner = 4
+0:1/0/custom_data_0 = "Building Wall"
+
+[sub_resource type="TileSet" id="TileSet_pjele"]
+tile_size = Vector2i(128, 128)
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Fence"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+terrain_set_0/terrain_1/name = "Stone Wall"
+terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
+terrain_set_0/terrain_2/name = "Sandbags"
+terrain_set_0/terrain_2/color = Color(0.46875, 0.5, 0.25, 1)
+terrain_set_0/terrain_3/name = "Bush"
+terrain_set_0/terrain_3/color = Color(0.375, 0.5, 0.25, 1)
+terrain_set_0/terrain_4/name = "Indoors Wall"
+terrain_set_0/terrain_4/color = Color(0.28125, 0.5, 0.25, 1)
+terrain_set_0/terrain_5/name = "Window"
+terrain_set_0/terrain_5/color = Color(0.25, 0.5, 0.3125, 1)
+terrain_set_0/terrain_6/name = "Door"
+terrain_set_0/terrain_6/color = Color(0.25, 0.5, 0.40625, 1)
+terrain_set_0/terrain_7/name = "Reinforced Wall"
+terrain_set_0/terrain_7/color = Color(0.25, 0.5, 0.5, 1)
+custom_data_layer_0/name = "Type"
+custom_data_layer_0/type = 4
+sources/0 = SubResource("TileSetAtlasSource_qoqmi")
+
 [node name="TestMap" type="Node2D" unique_id=1221168322]
 script = ExtResource("1_2s55i")
 metadata/_custom_type_script = "uid://cj4e246xs572y"
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=36845964]
+[node name="TerrainMap" type="TileMapLayer" parent="." unique_id=36845964]
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAOAAcAAAAEAAEAAAAOAAYAAAABAAAAAAAOAAUAAAABAAAAAAAOAAQAAAACAAEAAAAOAAMAAAACAAEAAAAOAAIAAAACAAEAAAAOAAEAAAABAAAAAAAOAAAAAAABAAAAAAANAAcAAAAEAAEAAAANAAYAAAABAAAAAAANAAUAAAABAAAAAAANAAQAAAACAAEAAAANAAMAAAACAAEAAAANAAIAAAACAAEAAAANAAEAAAABAAAAAAANAAAAAAABAAAAAAAMAAcAAAAEAAEAAAAMAAYAAAAEAAAAAAAMAAUAAAAEAAAAAAAMAAQAAAAEAAAAAAAMAAMAAAAEAAAAAAAMAAIAAAAEAAAAAAAMAAEAAAAEAAAAAAAMAAAAAAAEAAAAAAALAAcAAAABAAAAAAALAAYAAAAEAAAAAAALAAUAAAAEAAAAAAALAAQAAAAEAAAAAAALAAMAAAAEAAAAAAALAAIAAAAEAAAAAAALAAEAAAAEAAAAAAALAAAAAAAEAAAAAAAKAAcAAAAAAAEAAAAKAAYAAAAEAAAAAAAKAAUAAAAEAAAAAAAKAAQAAAABAAAAAAAKAAMAAAADAAAAAAAKAAIAAAABAAAAAAAKAAEAAAABAAAAAAAKAAAAAAAFAAAAAAAJAAcAAAAAAAEAAAAJAAYAAAAEAAAAAAAJAAUAAAAEAAAAAAAJAAQAAAAFAAAAAAAJAAMAAAADAAAAAAAJAAIAAAADAAAAAAAJAAEAAAABAAAAAAAJAAAAAAABAAAAAAAIAAcAAAAAAAEAAAAIAAYAAAAEAAAAAAAIAAUAAAAEAAAAAAAIAAQAAAABAAAAAAAIAAMAAAACAAAAAAAIAAIAAAACAAAAAAAIAAEAAAACAAAAAAAIAAAAAAABAAAAAAAHAAcAAAABAAAAAAAHAAYAAAAEAAAAAAAHAAUAAAAEAAAAAAAHAAQAAAAEAAAAAAAHAAMAAAACAAAAAAAHAAIAAAACAAAAAAAHAAEAAAACAAAAAAAHAAAAAAABAAAAAAAGAAcAAAABAAAAAAAGAAYAAAAEAAAAAAAGAAUAAAAEAAAAAAAGAAQAAAABAAAAAAAGAAMAAAACAAAAAAAGAAIAAAACAAAAAAAGAAEAAAACAAAAAAAGAAAAAAABAAAAAAAFAAcAAAABAAAAAAAFAAYAAAAEAAAAAAAFAAUAAAAEAAAAAAAFAAQAAAABAAAAAAAFAAMAAAADAAAAAAAFAAIAAAADAAAAAAAFAAEAAAABAAAAAAAFAAAAAAAAAAAAAAAEAAcAAAABAAAAAAAEAAYAAAAEAAAAAAAEAAUAAAAEAAAAAAAEAAQAAAABAAAAAAAEAAMAAAADAAAAAAAEAAIAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAAAAAABAAAAAAADAAcAAAABAAAAAAADAAYAAAAEAAAAAAADAAUAAAAEAAAAAAADAAQAAAAFAAAAAAADAAMAAAAAAAAAAAADAAIAAAAAAAAAAAADAAEAAAABAAAAAAADAAAAAAAAAAAAAAACAAcAAAABAAAAAAACAAYAAAAEAAAAAAACAAUAAAAEAAAAAAACAAQAAAABAAAAAAACAAMAAAAAAAAAAAACAAIAAAAAAAAAAAACAAEAAAABAAAAAAACAAAAAAAAAAAAAAABAAcAAAABAAAAAAABAAYAAAAEAAAAAAABAAUAAAAEAAAAAAABAAQAAAABAAAAAAABAAMAAAABAAAAAAABAAIAAAABAAAAAAABAAEAAAAAAAAAAAABAAAAAAABAAAAAAAAAAcAAAABAAAAAAAAAAYAAAAEAAAAAAAAAAUAAAAEAAAAAAAAAAQAAAABAAAAAAAAAAMAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAEAAAABAAAAAAAPAAgAAAABAAAAAAAPAAcAAAAEAAEAAAAPAAYAAAABAAAAAAAPAAUAAAABAAAAAAAPAAQAAAACAAEAAAAPAAMAAAACAAEAAAAPAAIAAAACAAEAAAAPAAEAAAABAAAAAAAPAAAAAAABAAAAAAAOAAgAAAABAAAAAAANAAgAAAABAAAAAAAMAAgAAAABAAAAAAALAAgAAAABAAAAAAAKAAgAAAAAAAEAAAAJAAgAAAAAAAEAAAAIAAgAAAAAAAEAAAAHAAgAAAABAAAAAAAGAAgAAAABAAAAAAAFAAgAAAAFAAAAAAAEAAgAAAABAAAAAAADAAgAAAAAAAIAAAACAAgAAAAAAAIAAAABAAgAAAAAAAIAAAAAAAgAAAAAAAIAAAA=")
 tile_set = SubResource("TileSet_a3b3n")
+
+[node name="CoverMap" type="TileMapLayer" parent="." unique_id=61085414]
+tile_map_data = PackedByteArray("AAAGAAIAAAAAAAAAAAAGAAEAAAAAAAEAAAAHAAMAAAADAAAAAAAGAAMAAAAHAAAAAAAIAAMAAAAGAAAAAAAIAAIAAAABAAAAAAAIAAEAAAABAAEAAAAHAAEAAAACAAAAAAAOAAUAAAACAAAAAAANAAUAAAACAAAAAAAPAAUAAAACAAAAAAADAAYAAAABAAAAAAADAAcAAAABAAAAAAAKAAYAAAAAAAAAAAA=")
+tile_set = ExtResource("3_38prr")
+
+[node name="CoverTypeMap" type="TileMapLayer" parent="." unique_id=1938416006]
+tile_map_data = PackedByteArray("AAADAAcAAAACAAAAAAADAAYAAAACAAAAAAAGAAMAAAAAAAEAAAAGAAEAAAAAAAEAAAAHAAEAAAAAAAEAAAAIAAEAAAAAAAEAAAAIAAMAAAAAAAEAAAAGAAIAAAABAAEAAAAIAAIAAAABAAEAAAAHAAMAAAACAAEAAAANAAUAAAABAAAAAAAOAAUAAAABAAAAAAAPAAUAAAABAAAAAAAKAAYAAAACAAAAAAA=")
+tile_set = SubResource("TileSet_pjele")

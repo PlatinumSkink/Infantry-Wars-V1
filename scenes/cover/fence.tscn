@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://di0ioxhrxnsc7"]
+
+[ext_resource type="Script" uid="uid://dl3uqmghhkh4h" path="res://scripts/cover.gd" id="1_npqc1"]
+[ext_resource type="Texture2D" uid="uid://dpr2llp5en6qu" path="res://assets/PaintTerrain/Cover/ActualCover/Fence.jpg" id="2_7scrf"]
+
+[node name="Fence" type="Node2D" unique_id=1406565692]
+script = ExtResource("1_npqc1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1481237452]
+texture = ExtResource("2_7scrf")
