@@ -14,9 +14,7 @@ const TRENCH = preload("uid://bo7oe1pauol3d")
 const WASTELAND = preload("uid://dmk0ogaalafow")
 const WATER = preload("uid://clov3pgyy2heg")
 
-@onready var camera: Node2D = $Camera
-@onready var camera_2d: Camera2D = $Camera/Camera2D
-@export var camera_speed: int = 500
+@onready var camera: TileCamera = $Camera
 
 var terrain_dictionary: Dictionary[Globals.Terrain, Resource] = {
 	Globals.Terrain.Forest: FOREST,
@@ -62,22 +60,13 @@ var pixels: int = 128
 
 @onready var zone: Sprite2D = $Zone
 
-var camera_position_x: float = 0:
-	set(value):
-		camera_position_x = value
-		camera.position.x = camera_position_x
-
-var camera_position_y: float = 0:
-	set(value):
-		camera_position_y = value
-		camera.position.y = camera_position_y
 
 func _ready() -> void:
 	build_map(test_map)
+	camera.setup(map_width_pixels, map_height_pixels)
 	var half_map_width = map_width_pixels / 2
 	var half_map_height = map_height_pixels / 2
-	camera_position_x = half_map_width
-	camera_position_y = half_map_height
+	
 
 func build_map(map) -> void:
 	map_height = len(map)
@@ -98,6 +87,8 @@ func build_map(map) -> void:
 	map_width_pixels = map_width * pixels
 	map_height_pixels = map_height * pixels
 
+
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var mousePos: Vector2 = get_global_mouse_position()
@@ -109,32 +100,7 @@ func _process(delta: float) -> void:
 		zone.position = Vector2(x * pixels, y * pixels)
 	else:
 		zone.visible = false
-	var viewport_size = get_viewport_rect().size
-	var twenty_percent_of_width = viewport_size / 5
-	var zoomed_viewport_size = viewport_size / camera_2d.zoom
-	if viewport_size.x / camera_2d.zoom.x < map_width_pixels:
-		if viewportMousePos.x < twenty_percent_of_width.x:
-			camera_position_x -= camera_speed / camera_2d.zoom.x * delta
-			if camera_position_x < (viewport_size.x / camera_2d.zoom.x) / 2:
-				camera_position_x = (viewport_size.x / camera_2d.zoom.x) / 2
-		if viewportMousePos.x > viewport_size.x - twenty_percent_of_width.x:
-			camera_position_x += camera_speed / camera_2d.zoom.y * delta
-			if camera_position_x + (viewport_size.x / camera_2d.zoom.x) / 2 > map_width_pixels:
-				camera_position_x = map_width_pixels - (viewport_size.x / camera_2d.zoom.x) / 2
-	else:
-		camera_position_x = map_width_pixels / 2 # middle
-	if viewport_size.y / camera_2d.zoom.y < map_height_pixels:
-		if viewportMousePos.y < twenty_percent_of_width.y:
-			camera_position_y -= camera_speed / camera_2d.zoom.y * delta
-			if camera_position_y - (viewport_size.y / camera_2d.zoom.y) / 2 < 0:
-				camera_position_y = (viewport_size.y / camera_2d.zoom.y) / 2
-		if viewportMousePos.y > viewport_size.y - twenty_percent_of_width.y:
-			camera_position_y += camera_speed / camera_2d.zoom.y * delta
-			if camera_position_y + (viewport_size.y / camera_2d.zoom.y) / 2 > map_height_pixels:
-				camera_position_y = map_height_pixels - (viewport_size.y / camera_2d.zoom.y) / 2
-	else:
-		camera_position_y = map_height_pixels / 2 # middle
-
+	
 func get_mouse_grid_coordinate() -> Vector2:
 	var mousePos: Vector2 = get_global_mouse_position()
 	var x = floorf(mousePos.x / pixels)
@@ -144,9 +110,6 @@ func get_mouse_grid_coordinate() -> Vector2:
 func is_in_bounds(x: int, y: int) -> bool:
 	return x < map_width && y < map_height && x > -1 && y > -1
 
-var zoom_minimum = Vector2(.1, .1) 
-var zoom_maximum = Vector2(2.5, 2.5)
-var zoom_speed = Vector2(.5, .5)
 
 func _input(event: InputEvent) -> void: # When an action happened.
 	if event.is_action_pressed("click"):
@@ -154,19 +117,6 @@ func _input(event: InputEvent) -> void: # When an action happened.
 		if is_in_bounds(grid_pos.y, grid_pos.x):
 			var terrain = tile_map[grid_pos.y][grid_pos.x]
 			print("terrain: " + str(terrain.terrain_type))
-	
-	if event.is_action_pressed("zoom_in"):
-		if camera_2d.zoom > zoom_minimum:
-			camera_2d.zoom -= zoom_speed
-			var viewport_size = get_viewport_rect().size
-			print("zoom: " + str(camera_2d.zoom) + ". viewport_size: " + str(viewport_size / camera_2d.zoom) + ". map_size: " + str(map_width_pixels) + "," + str(map_height_pixels))
-	
-	if event.is_action_pressed("zoom_out"):
-		if camera_2d.zoom < zoom_maximum:
-			camera_2d.zoom += zoom_speed
-			var viewport_size = get_viewport_rect().size
-			print("zoom: " + str(camera_2d.zoom) + ". viewport_size: " + str(viewport_size / camera_2d.zoom) + ". map_size: " + str(map_width_pixels) + "," + str(map_height_pixels))
-
 	
 	if event.is_action_pressed("escape"):
 		get_tree().quit()

@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://58trghj762dh" path="res://scripts/tile_map_layer_test.gd" id="1_pncg5"]
 [ext_resource type="Texture2D" uid="uid://dsgsm7f4yq03q" path="res://assets/Tiny Swords (Free Pack)/Terrain/Tileset/Tilemap_color1.png" id="2_ppc4v"]
-[ext_resource type="Texture2D" uid="uid://7ojey8136xtn" path="res://assets/PaintTerrain/Sand.png" id="3_ppc4v"]
+[ext_resource type="Texture2D" uid="uid://7ojey8136xtn" path="res://assets/Zone.png" id="3_ppc4v"]
+
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yqjtg"]
 texture = ExtResource("2_ppc4v")

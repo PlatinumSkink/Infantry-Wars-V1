@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bedpgwfvmyevf"]
 
 [ext_resource type="Script" uid="uid://vpes2426bhp6" path="res://scripts/generated_map.gd" id="1_h5ye1"]
-[ext_resource type="Texture2D" uid="uid://7ojey8136xtn" path="res://assets/PaintTerrain/Sand.png" id="2_l1oju"]
+[ext_resource type="Texture2D" uid="uid://7ojey8136xtn" path="res://assets/Zone.png" id="2_l1oju"]
+[ext_resource type="Script" uid="uid://cxcixxmcsik5o" path="res://scripts/camera.gd" id="3_2cisp"]
 
 [node name="GeneratedMap" type="Node2D" unique_id=1884705217]
 script = ExtResource("1_h5ye1")
@@ -13,5 +14,6 @@ texture = ExtResource("2_l1oju")
 centered = false
 
 [node name="Camera" type="Node2D" parent="." unique_id=419798172]
+script = ExtResource("3_2cisp")
 
 [node name="Camera2D" type="Camera2D" parent="Camera" unique_id=2041094251]
