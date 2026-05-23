@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://dsgsm7f4yq03q" path="res://assets/Tiny Swords (Free Pack)/Terrain/Tileset/Tilemap_color1.png" id="2_ppc4v"]
 [ext_resource type="Texture2D" uid="uid://7ojey8136xtn" path="res://assets/Zone.png" id="3_ppc4v"]
 
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yqjtg"]
 texture = ExtResource("2_ppc4v")
 texture_region_size = Vector2i(32, 32)

@@ -16,6 +16,21 @@ const WATER = preload("uid://clov3pgyy2heg")
 
 @onready var camera: TileCamera = $Camera
 
+var terrain_string_dictionary: Dictionary[String, Globals.Terrain] = {
+	"Forest": Globals.Terrain.Forest,
+	"Grass": Globals.Terrain.Grass,
+	"Indoors": Globals.Terrain.Indoors,
+	"Mud": Globals.Terrain.Mud,
+	"Road": Globals.Terrain.Road,
+	"Rock": Globals.Terrain.Rock,
+	"Ruins": Globals.Terrain.Ruins,
+	"Sand": Globals.Terrain.Sand,
+	"Tall Grass": Globals.Terrain.TallGrass,
+	"Thicket": Globals.Terrain.Thicket,
+	"Trench": Globals.Terrain.Trench,
+	"Wasteland": Globals.Terrain.Wasteland,
+	"Water": Globals.Terrain.Water,
+}
 var terrain_dictionary: Dictionary[Globals.Terrain, Resource] = {
 	Globals.Terrain.Forest: FOREST,
 	Globals.Terrain.Grass: GRASS,
@@ -31,6 +46,7 @@ var terrain_dictionary: Dictionary[Globals.Terrain, Resource] = {
 	Globals.Terrain.Wasteland: WASTELAND,
 	Globals.Terrain.Water: WATER,
 }
+
 
 var test_map = [
 	[4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4],
@@ -60,9 +76,14 @@ var pixels: int = 128
 
 @onready var zone: Sprite2D = $Zone
 
+@export var new_map: PaintableMap
+const TEST_MAP = preload("uid://duvdr268m838v")
 
 func _ready() -> void:
-	build_map(test_map)
+	var instance: PaintableMap = TEST_MAP.instantiate()
+	add_child(instance)
+	build_map(instance.get_array())
+	instance.queue_free()
 	camera.setup(map_width_pixels, map_height_pixels)
 	var half_map_width = map_width_pixels / 2
 	var half_map_height = map_height_pixels / 2
@@ -76,7 +97,8 @@ func build_map(map) -> void:
 		var x: int = 0
 		var new_row = []
 		for tile in row:
-			var resource = terrain_dictionary[tile]
+			var tile_enum = terrain_string_dictionary[tile]
+			var resource = terrain_dictionary[tile_enum]
 			var instance = resource.instantiate()
 			instance.position = Vector2(x * pixels, y * pixels)
 			add_child(instance)
