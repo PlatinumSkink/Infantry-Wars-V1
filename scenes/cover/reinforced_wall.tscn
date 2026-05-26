@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c6ayhgndlangs"]
+
+[ext_resource type="Script" uid="uid://dl3uqmghhkh4h" path="res://scripts/cover.gd" id="1_j04wk"]
+[ext_resource type="Texture2D" uid="uid://c0pw71rkenrmd" path="res://assets/PaintTerrain/Cover/ActualCover/Reinforced.png" id="2_j04wk"]
+
+[node name="ReinforcedWall" type="Node2D" unique_id=218757319]
+script = ExtResource("1_j04wk")
+defense = 4
+health = 250
+movement_cost = 99
+blocks = true
+metadata/_custom_type_script = "uid://dl3uqmghhkh4h"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1808894143]
+texture = ExtResource("2_j04wk")

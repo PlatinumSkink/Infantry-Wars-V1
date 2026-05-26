@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bw31e2c5bbpos"]
+
+[ext_resource type="Script" uid="uid://dl3uqmghhkh4h" path="res://scripts/cover.gd" id="1_4ni5c"]
+[ext_resource type="Texture2D" uid="uid://bxhm7ul2qddor" path="res://assets/PaintTerrain/Cover/ActualCover/Door.png" id="2_4ni5c"]
+
+[node name="Door" type="Node2D" unique_id=218757319]
+script = ExtResource("1_4ni5c")
+defense = 2
+health = 50
+destroyable_by_vehicles = true
+can_be_lit_on_fire = true
+burn_chance = 10
+metadata/_custom_type_script = "uid://dl3uqmghhkh4h"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1808894143]
+texture = ExtResource("2_4ni5c")

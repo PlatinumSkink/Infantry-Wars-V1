@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://jvdeijkipisc"]
+
+[ext_resource type="Script" uid="uid://dl3uqmghhkh4h" path="res://scripts/cover.gd" id="1_6ppgw"]
+[ext_resource type="Texture2D" uid="uid://dagbnq0mocb0q" path="res://assets/PaintTerrain/Cover/ActualCover/Bush.png" id="2_6ppgw"]
+
+[node name="Bush" type="Node2D" unique_id=218757319]
+script = ExtResource("1_6ppgw")
+defense = 1
+health = 200
+movement_cost = 2
+destroyable_by_vehicles = true
+can_be_lit_on_fire = true
+burn_chance = 40
+metadata/_custom_type_script = "uid://dl3uqmghhkh4h"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1808894143]
+texture = ExtResource("2_6ppgw")

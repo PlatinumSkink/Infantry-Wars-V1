@@ -48,6 +48,17 @@ enum Terrain {
 	Water = 12,
 }
 
+enum Cover {
+	Fence,
+	StoneWall,
+	Sandbags,
+	Bush,
+	IndoorWall,
+	GlassWindow,
+	Door,
+	ReinforcedWall,
+}
+
 enum MovementType {
 	Foot,
 	Wheel,

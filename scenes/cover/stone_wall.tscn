@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://8rxmxqorrm8m"]
+
+[ext_resource type="Script" uid="uid://dl3uqmghhkh4h" path="res://scripts/cover.gd" id="1_6u2qw"]
+[ext_resource type="Texture2D" uid="uid://bh1dsr04h3se8" path="res://assets/PaintTerrain/Cover/ActualCover/StoneWall.png" id="2_dlldq"]
+
+[node name="StoneWall" type="Node2D" unique_id=218757319]
+script = ExtResource("1_6u2qw")
+defense = 3
+health = 100
+movement_cost = 1
+metadata/_custom_type_script = "uid://dl3uqmghhkh4h"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1808894143]
+texture = ExtResource("2_dlldq")

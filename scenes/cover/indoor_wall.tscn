@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c558njtvp0rxr"]
+
+[ext_resource type="Script" uid="uid://dl3uqmghhkh4h" path="res://scripts/cover.gd" id="1_n6kna"]
+[ext_resource type="Texture2D" uid="uid://d3t4h1i1b0dr6" path="res://assets/PaintTerrain/Cover/ActualCover/IndoorsWall.png" id="2_n6kna"]
+
+[node name="IndoorWall" type="Node2D" unique_id=218757319]
+script = ExtResource("1_n6kna")
+defense = 2
+health = 50
+movement_cost = 99
+blocks = true
+destroyable_by_vehicles = true
+can_be_lit_on_fire = true
+burn_chance = 10
+metadata/_custom_type_script = "uid://dl3uqmghhkh4h"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1808894143]
+texture = ExtResource("2_n6kna")

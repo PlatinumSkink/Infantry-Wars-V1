@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b8x8cl5abj3pw"]
+
+[ext_resource type="Script" uid="uid://dl3uqmghhkh4h" path="res://scripts/cover.gd" id="1_mrrp6"]
+[ext_resource type="Texture2D" uid="uid://b06jq26p5ls76" path="res://assets/PaintTerrain/Cover/ActualCover/Window.png" id="2_mrrp6"]
+
+[node name="Window" type="Node2D" unique_id=218757319]
+script = ExtResource("1_mrrp6")
+defense = 2
+health = 50
+movement_cost = 1
+destroyable_by_vehicles = true
+can_be_lit_on_fire = true
+burn_chance = 10
+metadata/_custom_type_script = "uid://dl3uqmghhkh4h"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1808894143]
+texture = ExtResource("2_mrrp6")
