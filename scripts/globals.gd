@@ -59,6 +59,19 @@ enum Cover {
 	ReinforcedWall,
 }
 
+# Left, Right, Up, Down
+# SE, NE, NW, SW
+enum Direction {
+	Left,
+	Right,
+	Up,
+	Down,
+	SE,
+	NE,
+	NW,
+	SW,
+}
+
 enum MovementType {
 	Foot,
 	Wheel,

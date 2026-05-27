@@ -8,3 +8,4 @@ extends Node2D
 @export var destroyable_by_vehicles: bool
 @export var can_be_lit_on_fire: bool
 @export var burn_chance: int
+var direction: Global.Direction
