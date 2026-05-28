@@ -14,6 +14,16 @@ const TRENCH = preload("uid://bo7oe1pauol3d")
 const WASTELAND = preload("uid://dmk0ogaalafow")
 const WATER = preload("uid://clov3pgyy2heg")
 
+const BUSH = preload("uid://jvdeijkipisc")
+const DOOR = preload("uid://bw31e2c5bbpos")
+const FENCE = preload("uid://di0ioxhrxnsc7")
+const INDOOR_WALL = preload("uid://c558njtvp0rxr")
+const REINFORCED_WALL = preload("uid://c6ayhgndlangs")
+const SANDBAGS = preload("uid://d20tjritd3tho")
+const STONE_WALL = preload("uid://8rxmxqorrm8m")
+const WINDOW = preload("uid://b8x8cl5abj3pw")
+
+
 @onready var camera: TileCamera = $Camera
 
 var terrain_string_dictionary: Dictionary[String, Globals.Terrain] = {
@@ -46,26 +56,17 @@ var terrain_dictionary: Dictionary[Globals.Terrain, Resource] = {
 	Globals.Terrain.Wasteland: WASTELAND,
 	Globals.Terrain.Water: WATER,
 }
+var cover_dictionary: Dictionary[Globals.Cover, Resource] = {
+	Globals.Cover.Bush: BUSH, 
+	Globals.Cover.Door: DOOR,
+	Globals.Cover.Fence: FENCE,
+	Globals.Cover.IndoorWall: INDOOR_WALL,
+	Globals.Cover.ReinforcedWall: REINFORCED_WALL,
+	Globals.Cover.Sandbags: SANDBAGS,
+	Globals.Cover.StoneWall: STONE_WALL,
+	Globals.Cover.GlassWindow: WINDOW,
+}
 
-
-var test_map = [
-	[4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4],
-	[2, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-	[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-	[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1],
-	[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-	[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-	[1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-	[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-	[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1],
-	[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-	[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1],
-	[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-	[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1],
-	[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-	[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
-	[4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4],
-]
 var map_width: int = 0
 var map_height: int = 0
 var map_width_pixels: int = 0
@@ -83,10 +84,9 @@ func _ready() -> void:
 	var instance: PaintableMap = TEST_MAP.instantiate()
 	add_child(instance)
 	build_map(instance.get_array())
+	build_cover(instance.get_cover_dictionary())
 	instance.queue_free()
 	camera.setup(map_width_pixels, map_height_pixels)
-	var half_map_width = map_width_pixels / 2
-	var half_map_height = map_height_pixels / 2
 	
 
 func build_map(map) -> void:
@@ -109,12 +109,21 @@ func build_map(map) -> void:
 	map_width_pixels = map_width * pixels
 	map_height_pixels = map_height * pixels
 
+func build_cover(cover_item_dictionary: Dictionary[Vector2, CoverItem]) -> void:
+	for vector in cover_item_dictionary:
+		var coverItem = cover_item_dictionary[vector]
+		var resourse = cover_dictionary[coverItem.type]
+		var instance = resourse.instantiate()
+		print("creating " + str(coverItem.type) + " at " + str(vector))
+		instance.position.x = (vector.x) * pixels + (pixels / 2) + (coverItem.direction.x / 2 * pixels)
+		instance.position.y = (vector.y) * pixels + (pixels / 2) + (coverItem.direction.y / 2 * pixels)
+		print("instance.position = " + str(instance.position) + ". coverItem.direction: " + str(coverItem.direction))
+		add_child(instance)
 
-	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var mousePos: Vector2 = get_global_mouse_position()
-	var viewportMousePos: Vector2 = get_viewport().get_mouse_position()
 	var x = floorf(mousePos.x / pixels)
 	var y = floorf(mousePos.y / pixels)
 	if is_in_bounds(x, y):

@@ -43,10 +43,10 @@ func get_array():
 # 2,1. The one diagonally down-right from the tile two
 # tiles to the right of the tile in the top-left should be
 # 0,1,2|3,4|5,6 yes 6,2.
-func get_cover_dictionary():
-	var coverDictionary = {}
+# The items are saved in 
+func get_cover_dictionary() -> Dictionary[Vector2, CoverItem]:
+	var coverDictionary: Dictionary[Vector2, CoverItem] = {}
 	
-	var coverTypeSet: TileSet = cover_type_map.tile_set
 	var i: int = 0
 	for row in tile_map:
 		var j: int = 0
@@ -56,80 +56,149 @@ func get_cover_dictionary():
 			if cell != null:
 				#let's see.
 				var cover: int = cell.terrain
-				var cellType: TileData = cover_type_map.get_cell_tile_data(currentCell)
-				var coverType: int = cellType.terrain
+				var directionArray: Array[Vector2] = get_direction_array_from_cell_type(cover)
 				
 				# Value. I have the x and y. Top left of any tile is their coordinates * 2.
 				var x: int = j * 2
 				var y: int = i * 2
-				
-				pass
+
+				var coverType = get_cover_type(currentCell)
+
+				for vector in directionArray:
+					var coverSpot = Vector2(x + vector.x, y + vector.y)
+					var coverItem = CoverItem.create(coverType, vector)
+					coverDictionary[coverSpot] = coverItem
 			j += 1
 		i += 1
+	return coverDictionary
+
+func get_cover_type(currentCell) -> Globals.Cover:
+	var coverTypeSet: TileSet = cover_type_map.tile_set
+	var cellType: TileData = cover_type_map.get_cell_tile_data(currentCell)
+	var coverType: int = cellType.terrain
+	var coverTypeName: String = coverTypeSet.get_terrain_name(0, coverType)
+	return cover_string_dictionary[coverTypeName]
+
+
+var Left = Vector2(0,1)
+var Right = Vector2(2,1)
+var Up = Vector2(1,0)
+var Down = Vector2(1,2)
+var SE = Vector2(2,2)
+var NE = Vector2(2,0)
+var NW = Vector2(0,0)
+var SW = Vector2(0,2)
 
 # Return an array of all places to place cover.
 # Assume 0,0 is top left. 
-func get_direction_array_from_cell_type(cover: int):
+func get_direction_array_from_cell_type(cover: int) -> Array[Vector2]:
+	var directionArray: Array[Vector2] = []
 	var coverSet: TileSet = cover_map.tile_set
 	var terrain_name: String = coverSet.get_terrain_name(0, cover)
 	match terrain_name:
 		"Left":
-			pass
+			directionArray.append(Left)
 		"Right":
-			pass
+			directionArray.append(Right)
 		"Up":
-			pass
+			directionArray.append(Up)
 		"Down":
-			pass
+			directionArray.append(Down)
 		"LeftRight":
-			pass
+			directionArray.append(Left)
+			directionArray.append(Right)
 		"UpDown":
-			pass
+			directionArray.append(Up)
+			directionArray.append(Down)
 		"RightDown":
-			pass
+			directionArray.append(Right)
+			directionArray.append(Down)
 		"LeftDown":
-			pass
+			directionArray.append(Left)
+			directionArray.append(Down)
 		"LeftUp":
-			pass
+			directionArray.append(Left)
+			directionArray.append(Up)
 		"RightUp":
-			pass
+			directionArray.append(Right)
+			directionArray.append(Up)
 		"UpOpen":
-			pass
+			directionArray.append(Left)
+			directionArray.append(Right)
+			directionArray.append(Down)
 		"RightOpen":
-			pass
+			directionArray.append(Left)
+			directionArray.append(Up)
+			directionArray.append(Down)
 		"DownOpen":
-			pass
+			directionArray.append(Left)
+			directionArray.append(Right)
+			directionArray.append(Up)
 		"LeftOpen":
-			pass
+			directionArray.append(Right)
+			directionArray.append(Up)
+			directionArray.append(Down)
 		"Box":
-			pass
+			directionArray.append(Left)
+			directionArray.append(Right)
+			directionArray.append(Up)
+			directionArray.append(Down)
 		"SE":
-			pass
+			directionArray.append(SE)
 		"NE":
-			pass
+			directionArray.append(NE)
 		"NW":
-			pass
+			directionArray.append(NW)
 		"SW":
-			pass
+			directionArray.append(SW)
 		"SENW":
-			pass
+			directionArray.append(SE)
+			directionArray.append(NW)
 		"NESW":
-			pass
+			directionArray.append(NE)
+			directionArray.append(SW)
 		"SENE":
-			pass
+			directionArray.append(SE)
+			directionArray.append(NE)
 		"SESW":
-			pass
+			directionArray.append(SE)
+			directionArray.append(SW)
 		"NWSW":
-			pass
+			directionArray.append(NW)
+			directionArray.append(SW)
 		"NENW":
-			pass
+			directionArray.append(NE)
+			directionArray.append(NW)
 		"OpenNW":
-			pass
+			directionArray.append(SE)
+			directionArray.append(NE)
+			directionArray.append(SW)
 		"OpenNE":
-			pass
+			directionArray.append(SE)
+			directionArray.append(NW)
+			directionArray.append(SW)
 		"OpenSE":
-			pass
+			directionArray.append(NE)
+			directionArray.append(NW)
+			directionArray.append(SW)
 		"OpenSW":
-			pass
+			directionArray.append(SE)
+			directionArray.append(NE)
+			directionArray.append(NW)
 		"Diagonal Box":
-			pass
+			directionArray.append(SE)
+			directionArray.append(NE)
+			directionArray.append(NW)
+			directionArray.append(SW)
+	return directionArray
+
+var cover_string_dictionary: Dictionary[String, Globals.Cover] = {
+	"Fence": Globals.Cover.Fence,
+	"Stone Wall": Globals.Cover.StoneWall,
+	"Sandbags": Globals.Cover.Sandbags,
+	"Bush": Globals.Cover.Bush,
+	"Indoors Wall": Globals.Cover.IndoorWall,
+	"Window": Globals.Cover.GlassWindow,
+	"Door": Globals.Cover.Door,
+	"Reinforced Wall": Globals.Cover.ReinforcedWall,
+}
