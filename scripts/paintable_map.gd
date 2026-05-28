@@ -51,7 +51,7 @@ func get_cover_dictionary() -> Dictionary[Vector2, CoverItem]:
 	for row in tile_map:
 		var j: int = 0
 		for tile in row:
-			var currentCell = Vector2(i,j)
+			var currentCell = Vector2(j,i)
 			var cell: TileData = cover_map.get_cell_tile_data(currentCell)
 			if cell != null:
 				#let's see.

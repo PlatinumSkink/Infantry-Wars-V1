@@ -72,6 +72,7 @@ var map_height: int = 0
 var map_width_pixels: int = 0
 var map_height_pixels: int = 0
 var tile_map = []
+var cover_map = {}
 
 var pixels: int = 128
 
@@ -114,11 +115,13 @@ func build_cover(cover_item_dictionary: Dictionary[Vector2, CoverItem]) -> void:
 		var coverItem = cover_item_dictionary[vector]
 		var resourse = cover_dictionary[coverItem.type]
 		var instance = resourse.instantiate()
-		print("creating " + str(coverItem.type) + " at " + str(vector))
-		instance.position.x = (vector.x) * pixels + (pixels / 2) + (coverItem.direction.x / 2 * pixels)
-		instance.position.y = (vector.y) * pixels + (pixels / 2) + (coverItem.direction.y / 2 * pixels)
-		print("instance.position = " + str(instance.position) + ". coverItem.direction: " + str(coverItem.direction))
+		instance.position.x = (vector.x) * pixels / 2
+		instance.position.y = (vector.y) * pixels / 2
+		var directions = Vector2(coverItem.direction.x -1, coverItem.direction.y -1)
+		directions += instance.position
+		instance.set_direction(directions)
 		add_child(instance)
+		cover_map[vector] = instance
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

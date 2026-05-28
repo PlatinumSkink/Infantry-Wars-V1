@@ -9,3 +9,23 @@ extends Node2D
 @export var can_be_lit_on_fire: bool
 @export var burn_chance: int
 var direction: Global.Direction
+
+func set_direction(directions):
+	self.look_at(directions)
+	match directions:
+		Vector2(-1,-1):
+			direction = Global.Direction.NW
+		Vector2(-1,0):
+			direction = Global.Direction.Left
+		Vector2(-1,1):
+			direction = Global.Direction.SW
+		Vector2(0,-1):
+			direction = Global.Direction.Up
+		Vector2(0,1):
+			direction = Global.Direction.Down
+		Vector2(1,-1):
+			direction = Global.Direction.NE
+		Vector2(1,0):
+			direction = Global.Direction.Right
+		Vector2(1,1):
+			direction = Global.Direction.SE
