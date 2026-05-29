@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cw80y7sg026sc"]
 
 [ext_resource type="Script" uid="uid://cuss0wbaxoxhr" path="res://scripts/terrain.gd" id="1_4qur5"]
-[ext_resource type="Texture2D" uid="uid://xdmgarbxc7u8" path="res://assets/PaintTerrain/Mud.png" id="2_4qur5"]
+[ext_resource type="Texture2D" uid="uid://xdmgarbxc7u8" path="res://assets/PaintTerrain/Terrain/Mud.png" id="2_4qur5"]
 
 [node name="Mud" type="Node2D" unique_id=39435083]
 script = ExtResource("1_4qur5")

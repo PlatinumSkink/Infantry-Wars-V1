@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://vpes2426bhp6" path="res://scripts/generated_map.gd" id="1_h5ye1"]
 [ext_resource type="Texture2D" uid="uid://7ojey8136xtn" path="res://assets/Zone.png" id="2_l1oju"]
 [ext_resource type="Script" uid="uid://cxcixxmcsik5o" path="res://scripts/camera.gd" id="3_2cisp"]
+[ext_resource type="PackedScene" uid="uid://cb2ilvj7cx761" path="res://scenes/control_points/control_point.tscn" id="4_rk6ul"]
 
 [node name="GeneratedMap" type="Node2D" unique_id=1884705217]
 script = ExtResource("1_h5ye1")
@@ -17,3 +18,7 @@ centered = false
 script = ExtResource("3_2cisp")
 
 [node name="Camera2D" type="Camera2D" parent="Camera" unique_id=2041094251]
+
+[node name="ControlPoint" parent="." unique_id=1220668735 instance=ExtResource("4_rk6ul")]
+z_index = 45
+position = Vector2(201, 68)

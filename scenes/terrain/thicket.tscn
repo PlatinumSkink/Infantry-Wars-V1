@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://4u5ytx5altwk"]
 
 [ext_resource type="Script" uid="uid://cuss0wbaxoxhr" path="res://scripts/terrain.gd" id="1_hhjft"]
-[ext_resource type="Texture2D" uid="uid://b2fmxeiacgyl3" path="res://assets/PaintTerrain/Thicket.png" id="2_hhjft"]
+[ext_resource type="Texture2D" uid="uid://b2fmxeiacgyl3" path="res://assets/PaintTerrain/Terrain/Thicket.png" id="2_hhjft"]
 
 [node name="Thicket" type="Node2D" unique_id=39435083]
 script = ExtResource("1_hhjft")

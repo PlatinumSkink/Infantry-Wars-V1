@@ -1,6 +1,7 @@
 class_name Cover
 extends Node2D
 
+@export var cover_name: String
 @export var defense: int
 @export var health: int
 @export var movement_cost: int

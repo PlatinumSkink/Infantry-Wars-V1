@@ -5,6 +5,7 @@
 
 [node name="Window" type="Node2D" unique_id=218757319]
 script = ExtResource("1_mrrp6")
+cover_name = "Window"
 defense = 2
 health = 50
 movement_cost = 1

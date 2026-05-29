@@ -5,6 +5,7 @@
 
 [node name="Fence" type="Node2D" unique_id=1406565692]
 script = ExtResource("1_npqc1")
+cover_name = "Fence"
 defense = 2
 health = 50
 movement_cost = 1

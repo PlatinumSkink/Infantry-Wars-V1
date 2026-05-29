@@ -78,7 +78,6 @@ var pixels: int = 128
 
 @onready var zone: Sprite2D = $Zone
 
-@export var new_map: PaintableMap
 const TEST_MAP = preload("uid://duvdr268m838v")
 
 func _ready() -> void:
@@ -148,9 +147,20 @@ func is_in_bounds(x: int, y: int) -> bool:
 func _input(event: InputEvent) -> void: # When an action happened.
 	if event.is_action_pressed("click"):
 		var grid_pos = get_mouse_grid_coordinate()
-		if is_in_bounds(grid_pos.y, grid_pos.x):
+		print("grid_pos: " + str(grid_pos))
+		if is_in_bounds(grid_pos.x, grid_pos.y):
 			var terrain = tile_map[grid_pos.y][grid_pos.x]
 			print("terrain: " + str(terrain.terrain_type))
+			get_tile_cover(grid_pos)
 	
 	if event.is_action_pressed("escape"):
 		get_tree().quit()
+
+func get_tile_cover(grid_pos):
+	var cover_grid_pos: Vector2 = grid_pos * 2 # tile 1,1 is actually 2,2 in cover world.
+	for direction in Globals.Direction:
+		var coordinate: Vector2 = Globals.GetDirectionCoordinateString(direction)
+		var final_pos: Vector2 = cover_grid_pos + coordinate
+		if cover_map.has(final_pos):
+			var cover: Cover = cover_map[final_pos]
+			print("Has " + cover.cover_name + " in direction " + direction)

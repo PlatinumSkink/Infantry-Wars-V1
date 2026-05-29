@@ -5,6 +5,7 @@
 
 [node name="Sandbags" type="Node2D" unique_id=218757319]
 script = ExtResource("1_h8kw1")
+cover_name = "Sandbags"
 defense = 3
 health = 150
 movement_cost = 1

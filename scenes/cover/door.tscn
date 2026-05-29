@@ -5,6 +5,7 @@
 
 [node name="Door" type="Node2D" unique_id=218757319]
 script = ExtResource("1_4ni5c")
+cover_name = "Door"
 defense = 2
 health = 50
 destroyable_by_vehicles = true

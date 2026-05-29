@@ -5,6 +5,7 @@
 
 [node name="Bush" type="Node2D" unique_id=218757319]
 script = ExtResource("1_6ppgw")
+cover_name = "Bush"
 defense = 1
 health = 200
 movement_cost = 2

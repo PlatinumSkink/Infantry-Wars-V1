@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dmk0ogaalafow"]
 
 [ext_resource type="Script" uid="uid://cuss0wbaxoxhr" path="res://scripts/terrain.gd" id="1_iw2v3"]
-[ext_resource type="Texture2D" uid="uid://cuisanynlisf2" path="res://assets/PaintTerrain/Wasteland.png" id="2_iw2v3"]
+[ext_resource type="Texture2D" uid="uid://cuisanynlisf2" path="res://assets/PaintTerrain/Terrain/Wasteland.png" id="2_iw2v3"]
 
 [node name="Wasteland" type="Node2D" unique_id=39435083]
 script = ExtResource("1_iw2v3")

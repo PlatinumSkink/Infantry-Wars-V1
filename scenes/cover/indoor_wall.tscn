@@ -5,6 +5,7 @@
 
 [node name="IndoorWall" type="Node2D" unique_id=218757319]
 script = ExtResource("1_n6kna")
+cover_name = "Indoor Wall"
 defense = 2
 health = 50
 movement_cost = 99

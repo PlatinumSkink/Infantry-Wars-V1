@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://be4iwn1f0j2je"]
 
 [ext_resource type="Script" uid="uid://cuss0wbaxoxhr" path="res://scripts/terrain.gd" id="1_cmrm6"]
-[ext_resource type="Texture2D" uid="uid://c1hbbm4oo12ug" path="res://assets/PaintTerrain/Forest.png" id="2_cmrm6"]
+[ext_resource type="Texture2D" uid="uid://c1hbbm4oo12ug" path="res://assets/PaintTerrain/Terrain/Forest.png" id="2_cmrm6"]
+
 
 [node name="Forest" type="Node2D" unique_id=39435083]
 script = ExtResource("1_cmrm6")

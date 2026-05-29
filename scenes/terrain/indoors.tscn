@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bnj7g3m07pa8d"]
 
 [ext_resource type="Script" uid="uid://cuss0wbaxoxhr" path="res://scripts/terrain.gd" id="1_630qq"]
-[ext_resource type="Texture2D" uid="uid://builwsf7enuff" path="res://assets/PaintTerrain/Indoors.png" id="2_630qq"]
+[ext_resource type="Texture2D" uid="uid://builwsf7enuff" path="res://assets/PaintTerrain/Terrain/Indoors.png" id="2_630qq"]
 
 [node name="Indoors" type="Node2D" unique_id=39435083]
 script = ExtResource("1_630qq")

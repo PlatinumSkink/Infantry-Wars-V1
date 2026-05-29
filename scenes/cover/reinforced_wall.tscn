@@ -5,6 +5,7 @@
 
 [node name="ReinforcedWall" type="Node2D" unique_id=218757319]
 script = ExtResource("1_j04wk")
+cover_name = "Reinforced Wall"
 defense = 4
 health = 250
 movement_cost = 99
