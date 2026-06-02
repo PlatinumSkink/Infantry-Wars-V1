@@ -5,35 +5,36 @@
 
 [node name="Shock" type="Node2D" unique_id=729160094]
 script = ExtResource("1_krpty")
-cost = 1000
+unit_type = 1
+cost = 5000
 movement = 5
-attack_move = 3
-weapon_range = 3
-ammo = 9
+attack_move = 4
+weapon_range = 2
+ammo = 6
 size = 1
 vision = 5
 damage_table = Dictionary[int, int]({
-0: 0,
-1: 35,
+0: 85,
+1: 55,
 2: 1,
-3: 45,
-4: 35,
-5: 45,
-6: 55,
-7: 55,
-8: 35,
-9: 45,
-10: 55,
-11: 35,
-12: 35,
-13: 1,
-14: 10,
-15: 35,
+3: 75,
+4: 60,
+5: 85,
+6: 85,
+7: 85,
+8: 75,
+9: 85,
+10: 95,
+11: 75,
+12: 75,
+13: 5,
+14: 25,
+15: 55,
 16: 1,
 17: 1,
 18: 1,
 19: 1,
-20: 25,
+20: 45,
 21: 1,
 22: 1,
 23: 0,
