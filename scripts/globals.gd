@@ -37,7 +37,7 @@ enum Units {
 	IFV,
 	Fighter,
 	Bomber,
-	A_Copter,
+	Gunship,
 	T_Copter,
 }
 

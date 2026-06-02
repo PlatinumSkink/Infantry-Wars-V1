@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://dhn37niv4hybq"]
+
+[ext_resource type="Script" uid="uid://g3siinh7fn1u" path="res://scripts/unit.gd" id="1_nffi8"]
+[ext_resource type="Texture2D" uid="uid://si3oilrlf18o" path="res://assets/Units/sniper.png" id="2_xal7n"]
+
+[node name="Sniper" type="Node2D" unique_id=729160094]
+script = ExtResource("1_nffi8")
+cost = 1000
+movement = 5
+attack_move = 3
+weapon_range = 3
+ammo = 9
+size = 1
+vision = 5
+damage_table = Dictionary[int, int]({
+0: 0,
+1: 35,
+2: 1,
+3: 45,
+4: 35,
+5: 45,
+6: 55,
+7: 55,
+8: 35,
+9: 45,
+10: 55,
+11: 35,
+12: 35,
+13: 1,
+14: 10,
+15: 35,
+16: 1,
+17: 1,
+18: 1,
+19: 1,
+20: 25,
+21: 1,
+22: 1,
+23: 0,
+24: 0,
+25: 1,
+26: 1
+})
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=439059989]
+texture = ExtResource("2_xal7n")
