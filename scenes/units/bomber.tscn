@@ -5,41 +5,43 @@
 
 [node name="Bomber" type="Node2D" unique_id=729160094]
 script = ExtResource("1_nffi8")
-cost = 1000
-movement = 5
-attack_move = 3
-weapon_range = 3
-ammo = 9
-size = 1
+unit_type = 24
+cost = 17000
+movement = 8
+attack_move = 8
+weapon_range = 1
+ammo = 4
+size = 3
 vision = 5
+can_damage_items = true
 damage_table = Dictionary[int, int]({
-0: 0,
-1: 35,
-2: 1,
+0: 95,
+1: 75,
+2: 120,
 3: 45,
-4: 35,
-5: 45,
-6: 55,
-7: 55,
-8: 35,
-9: 45,
-10: 55,
-11: 35,
+4: 110,
+5: 75,
+6: 95,
+7: 95,
+8: 85,
+9: 110,
+10: 110,
+11: 40,
 12: 35,
-13: 1,
-14: 10,
-15: 35,
-16: 1,
-17: 1,
-18: 1,
-19: 1,
-20: 25,
-21: 1,
-22: 1,
+13: 100,
+14: 45,
+15: 95,
+16: 20,
+17: 100,
+18: 85,
+19: 55,
+20: 95,
+21: 75,
+22: 75,
 23: 0,
 24: 0,
-25: 1,
-26: 1
+25: 0,
+26: 0
 })
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=439059989]

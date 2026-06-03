@@ -5,11 +5,12 @@
 
 [node name="Shield" type="Node2D" unique_id=729160094]
 script = ExtResource("1_nffi8")
-cost = 1000
+unit_type = 13
+cost = 7000
 movement = 5
 attack_move = 3
 weapon_range = 3
-ammo = 9
+ammo = 5
 size = 1
 vision = 5
 damage_table = Dictionary[int, int]({

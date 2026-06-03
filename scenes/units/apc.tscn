@@ -5,12 +5,13 @@
 
 [node name="APC" type="Node2D" unique_id=729160094]
 script = ExtResource("1_nffi8")
-cost = 1000
-movement = 5
-attack_move = 3
+unit_type = 21
+cost = 7000
+movement = 6
+attack_move = 5
 weapon_range = 3
-ammo = 9
-size = 1
+ammo = 5
+size = 2
 vision = 5
 damage_table = Dictionary[int, int]({
 0: 55,

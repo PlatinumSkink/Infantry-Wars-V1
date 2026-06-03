@@ -9,6 +9,7 @@ var faction: Globals.Factions = Globals.Factions.None
 @export var cost: int
 @export var movement: int
 @export var attack_move: int
+@export var minimum_range: int = 0
 @export var weapon_range: int
 @export var ammo: int
 @export var size: int
