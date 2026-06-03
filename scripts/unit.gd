@@ -7,6 +7,7 @@ var faction: Globals.Factions = Globals.Factions.None
 
 @export var unit_type: Globals.Units
 @export var cost: int
+@export var movement_type: Globals.MovementType
 @export var movement: int
 @export var attack_move: int
 @export var minimum_range: int = 0

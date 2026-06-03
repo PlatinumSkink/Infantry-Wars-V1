@@ -7,6 +7,7 @@
 script = ExtResource("1_nffi8")
 unit_type = 23
 cost = 14000
+movement_type = 3
 movement = 8
 attack_move = 8
 weapon_range = 5
@@ -41,6 +42,35 @@ damage_table = Dictionary[int, int]({
 24: 85,
 25: 110,
 26: 110
+})
+use_ammo_when_targetting = Dictionary[int, bool]({
+0: false,
+1: false,
+2: false,
+3: false,
+4: false,
+5: false,
+6: false,
+7: false,
+8: false,
+9: false,
+10: false,
+11: false,
+12: false,
+13: false,
+14: false,
+15: false,
+16: false,
+17: false,
+18: false,
+19: false,
+20: false,
+21: false,
+22: false,
+23: true,
+24: true,
+25: true,
+26: true
 })
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=439059989]
