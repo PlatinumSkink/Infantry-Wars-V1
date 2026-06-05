@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://e04l7r0d7p1p"]
+
+[ext_resource type="Script" uid="uid://da2752weuvmtf" path="res://scripts/hp_box.gd" id="1_1n24m"]
+[ext_resource type="Texture2D" uid="uid://dexgvoy0whuhq" path="res://assets/PaintTerrain/singleWhitePixel.png" id="2_oj7cj"]
+
+[node name="HpBox" type="Node2D" unique_id=594723798]
+script = ExtResource("1_1n24m")
+
+[node name="SmallSprite" type="Sprite2D" parent="." unique_id=1306938072]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(32, 32)
+texture = ExtResource("2_oj7cj")
+
+[node name="SmallLabel" type="Label" parent="." unique_id=310332485]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -23.5
+offset_right = 20.0
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "9"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="BigSprite" type="Sprite2D" parent="." unique_id=1429770615]
+visible = false
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(50, 50)
+texture = ExtResource("2_oj7cj")
+
+[node name="BigLabel" type="Label" parent="." unique_id=942333912]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -44.5
+offset_right = 20.0
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "9"
+horizontal_alignment = 1
+vertical_alignment = 1

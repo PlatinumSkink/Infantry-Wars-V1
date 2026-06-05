@@ -163,6 +163,7 @@ var map_height_pixels: int = 0
 var tile_map = []
 var cover_map = {}
 var unit_map = {}
+var unit_array = []
 var control_point_map = {}
 
 var pixels: int = 128
@@ -180,7 +181,6 @@ func _ready() -> void:
 	build_units(instance.get_unit_dictionary(), instance.get_unit_faction_dictionary())
 	instance.queue_free()
 	camera.setup(map_width_pixels, map_height_pixels)
-	
 
 func build_map(map) -> void:
 	map_height = len(map)
@@ -227,6 +227,7 @@ func build_control_points(point_dictionary: Dictionary[Vector2, String], point_f
 		add_child(instance)
 		instance.size = size
 		instance.faction = faction
+		control_point_map[vector] = instance
 		if size == 2:
 			instance.position.x = vector.x * pixels + pixels
 			instance.position.y = vector.y * pixels
@@ -249,6 +250,8 @@ func build_units(vector_unit_dictionary: Dictionary[Vector2, String], unit_facti
 		add_child(instance)
 		var size = instance.size
 		instance.faction = faction
+		unit_map[vector] = instance
+		unit_array.append(instance)
 		if size == 1:
 			instance.position.x = vector.x * pixels + pixels / 2
 			instance.position.y = vector.y * pixels + pixels / 2
