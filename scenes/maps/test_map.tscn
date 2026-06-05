@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bpvhq17sgvd45" path="res://assets/PaintTerrain/Terrain/InfantryWarsTiles.png" id="2_o3n0h"]
 [ext_resource type="TileSet" uid="uid://c1y3765uc6u1q" path="res://tilesets/cover_tileset.tres" id="3_38prr"]
 [ext_resource type="Texture2D" uid="uid://vg2u7h7h58bg" path="res://assets/PaintTerrain/Cover/type_of_cover_map.png" id="4_a3b3n"]
-[ext_resource type="Texture2D" uid="uid://d14e0v6o1swol" path="res://assets/PaintTerrain/Maps/base_types.png" id="5_a3b3n"]
+[ext_resource type="Texture2D" uid="uid://bvlxqw4byju4q" path="res://assets/PaintTerrain/Maps/base_types_new.png" id="5_pjele"]
 [ext_resource type="TileSet" uid="uid://b4neq28xxh656" path="res://tilesets/faction_tileset.tres" id="6_pjele"]
 [ext_resource type="Texture2D" uid="uid://dl78vb25ugvmp" path="res://assets/PaintTerrain/Maps/unit_map.png" id="7_ibx7c"]
 
@@ -315,31 +315,9 @@ custom_data_layer_0/name = "Type"
 custom_data_layer_0/type = 4
 sources/0 = SubResource("TileSetAtlasSource_qoqmi")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pjele"]
-texture = ExtResource("5_a3b3n")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ibx7c"]
+texture = ExtResource("5_pjele")
 texture_region_size = Vector2i(128, 128)
-1:0/0 = 0
-1:0/0/terrain_set = 0
-1:0/0/terrain = 1
-1:0/0/terrains_peering_bit/right_side = 1
-1:0/0/terrains_peering_bit/bottom_right_corner = 1
-1:0/0/terrains_peering_bit/bottom_side = 1
-1:0/0/terrains_peering_bit/bottom_left_corner = 1
-1:0/0/terrains_peering_bit/left_side = 1
-1:0/0/terrains_peering_bit/top_left_corner = 1
-1:0/0/terrains_peering_bit/top_side = 1
-1:0/0/terrains_peering_bit/top_right_corner = 1
-2:0/0 = 0
-2:0/0/terrain_set = 0
-2:0/0/terrain = 2
-2:0/0/terrains_peering_bit/right_side = 2
-2:0/0/terrains_peering_bit/bottom_right_corner = 2
-2:0/0/terrains_peering_bit/bottom_side = 2
-2:0/0/terrains_peering_bit/bottom_left_corner = 2
-2:0/0/terrains_peering_bit/left_side = 2
-2:0/0/terrains_peering_bit/top_left_corner = 2
-2:0/0/terrains_peering_bit/top_side = 2
-2:0/0/terrains_peering_bit/top_right_corner = 2
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0
@@ -351,17 +329,78 @@ texture_region_size = Vector2i(128, 128)
 0:0/0/terrains_peering_bit/top_left_corner = 0
 0:0/0/terrains_peering_bit/top_side = 0
 0:0/0/terrains_peering_bit/top_right_corner = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 2
+1:0/0/terrains_peering_bit/right_side = 2
+1:0/0/terrains_peering_bit/bottom_right_corner = 2
+1:0/0/terrains_peering_bit/bottom_side = 2
+1:0/0/terrains_peering_bit/bottom_left_corner = 2
+1:0/0/terrains_peering_bit/left_side = 2
+1:0/0/terrains_peering_bit/top_left_corner = 2
+1:0/0/terrains_peering_bit/top_side = 2
+1:0/0/terrains_peering_bit/top_right_corner = 2
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 4
+2:0/0/terrains_peering_bit/right_side = 4
+2:0/0/terrains_peering_bit/bottom_right_corner = 4
+2:0/0/terrains_peering_bit/bottom_side = 4
+2:0/0/terrains_peering_bit/bottom_left_corner = 4
+2:0/0/terrains_peering_bit/left_side = 4
+2:0/0/terrains_peering_bit/top_left_corner = 4
+2:0/0/terrains_peering_bit/top_side = 4
+2:0/0/terrains_peering_bit/top_right_corner = 4
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 1
+0:1/0/terrains_peering_bit/right_side = 1
+0:1/0/terrains_peering_bit/bottom_right_corner = 1
+0:1/0/terrains_peering_bit/bottom_side = 1
+0:1/0/terrains_peering_bit/bottom_left_corner = 1
+0:1/0/terrains_peering_bit/left_side = 1
+0:1/0/terrains_peering_bit/top_left_corner = 1
+0:1/0/terrains_peering_bit/top_side = 1
+0:1/0/terrains_peering_bit/top_right_corner = 1
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 3
+1:1/0/terrains_peering_bit/right_side = 3
+1:1/0/terrains_peering_bit/bottom_right_corner = 3
+1:1/0/terrains_peering_bit/bottom_side = 3
+1:1/0/terrains_peering_bit/bottom_left_corner = 3
+1:1/0/terrains_peering_bit/left_side = 3
+1:1/0/terrains_peering_bit/top_left_corner = 3
+1:1/0/terrains_peering_bit/top_side = 3
+1:1/0/terrains_peering_bit/top_right_corner = 3
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/terrain = 5
+2:1/0/terrains_peering_bit/right_side = 5
+2:1/0/terrains_peering_bit/bottom_right_corner = 5
+2:1/0/terrains_peering_bit/bottom_side = 5
+2:1/0/terrains_peering_bit/bottom_left_corner = 5
+2:1/0/terrains_peering_bit/left_side = 5
+2:1/0/terrains_peering_bit/top_left_corner = 5
+2:1/0/terrains_peering_bit/top_side = 5
+2:1/0/terrains_peering_bit/top_right_corner = 5
 
-[sub_resource type="TileSet" id="TileSet_ibx7c"]
+[sub_resource type="TileSet" id="TileSet_7iodv"]
 tile_size = Vector2i(128, 128)
 terrain_set_0/mode = 0
-terrain_set_0/terrain_0/name = "Fob"
-terrain_set_0/terrain_0/color = Color(0.6898797, 0.17840892, 0, 1)
-terrain_set_0/terrain_1/name = "Ep"
-terrain_set_0/terrain_1/color = Color(0.5019608, 0.9647059, 0.2509804, 1)
-terrain_set_0/terrain_2/name = "P"
-terrain_set_0/terrain_2/color = Color(0.47058824, 0.5019608, 0.93333334, 1)
-sources/0 = SubResource("TileSetAtlasSource_pjele")
+terrain_set_0/terrain_0/name = "FOB2"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+terrain_set_0/terrain_1/name = "FOB3"
+terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
+terrain_set_0/terrain_2/name = "EP2"
+terrain_set_0/terrain_2/color = Color(0.46875, 0.5, 0.25, 1)
+terrain_set_0/terrain_3/name = "EP3"
+terrain_set_0/terrain_3/color = Color(0.375, 0.5, 0.25, 1)
+terrain_set_0/terrain_4/name = "P2"
+terrain_set_0/terrain_4/color = Color(0.28125, 0.5, 0.25, 1)
+terrain_set_0/terrain_5/name = "P3"
+terrain_set_0/terrain_5/color = Color(0.25, 0.5, 0.3125, 1)
+sources/0 = SubResource("TileSetAtlasSource_ibx7c")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7iodv"]
 texture = ExtResource("7_ibx7c")
@@ -896,7 +935,7 @@ texture_region_size = Vector2i(128, 128)
 [sub_resource type="TileSet" id="TileSet_00m6f"]
 tile_size = Vector2i(128, 128)
 terrain_set_0/mode = 0
-terrain_set_0/terrain_0/name = "Infantry"
+terrain_set_0/terrain_0/name = "Rifle"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 terrain_set_0/terrain_1/name = "Shock"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
@@ -969,13 +1008,17 @@ tile_map_data = PackedByteArray("AAADAAcAAAACAAAAAAADAAYAAAACAAAAAAAGAAMAAAAAAAE
 tile_set = SubResource("TileSet_pjele")
 
 [node name="ControlPointMap" type="TileMapLayer" parent="." unique_id=292001973]
-tile_set = SubResource("TileSet_ibx7c")
+tile_map_data = PackedByteArray("AAABAAYAAAAAAAEAAAALAAEAAAAAAAAAAAACAAEAAAACAAAAAAAHAAIAAAACAAEAAAAOAAMAAAABAAEAAAAGAAgAAAABAAAAAAA=")
+tile_set = SubResource("TileSet_7iodv")
 
 [node name="PointFactionMap" type="TileMapLayer" parent="." unique_id=888361156]
+tile_map_data = PackedByteArray("AAABAAYAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAIAAAAAAAIAAAACAAEAAAAAAAIAAAALAAEAAAAAAAEAAAAOAAMAAAAAAAEAAAA=")
 tile_set = ExtResource("6_pjele")
 
 [node name="UnitLayer" type="TileMapLayer" parent="." unique_id=615716215]
+tile_map_data = PackedByteArray("AAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAAEAAUAAAACAAMAAAAEAAYAAAACAAQAAAAFAAYAAAADAAQAAAAFAAUAAAADAAMAAAAGAAQAAAAAAAUAAAAHAAQAAAABAAUAAAAIAAQAAAACAAUAAAAIAAUAAAACAAYAAAAHAAUAAAABAAYAAAAGAAUAAAAAAAYAAAAGAAYAAAAAAAcAAAAHAAYAAAABAAcAAAAIAAYAAAACAAcAAAA=")
 tile_set = SubResource("TileSet_00m6f")
 
 [node name="UnitFactionLayer" type="TileMapLayer" parent="." unique_id=2026632502]
+tile_map_data = PackedByteArray("AAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAAEAAUAAAAAAAAAAAAGAAQAAAAAAAAAAAA=")
 tile_set = ExtResource("6_pjele")

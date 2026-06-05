@@ -2,9 +2,13 @@
 
 [ext_resource type="Script" uid="uid://c1242fcex03n4" path="res://scripts/control_point.gd" id="1_35sww"]
 [ext_resource type="Texture2D" uid="uid://dplqews64uoqs" path="res://assets/Icons/flagIcon.png" id="2_b4eif"]
+[ext_resource type="Texture2D" uid="uid://chgqpxehi7tfd" path="res://assets/Icons/2x2zone.png" id="3_b4eif"]
 
 [node name="ControlPoint" type="Node2D" unique_id=1220668735]
 script = ExtResource("1_35sww")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1583435833]
 texture = ExtResource("2_b4eif")
+
+[node name="Zone" type="Sprite2D" parent="." unique_id=2100665137]
+texture = ExtResource("3_b4eif")

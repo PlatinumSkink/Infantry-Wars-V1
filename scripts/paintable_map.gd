@@ -4,6 +4,11 @@ extends Node2D
 @onready var tile_map_layer: TileMapLayer = $TerrainMap
 @onready var cover_map: TileMapLayer = $CoverMap
 @onready var cover_type_map: TileMapLayer = $CoverTypeMap
+@onready var control_point_map: TileMapLayer = $ControlPointMap
+@onready var point_faction_map: TileMapLayer = $PointFactionMap
+@onready var unit_layer: TileMapLayer = $UnitLayer
+@onready var unit_faction_layer: TileMapLayer = $UnitFactionLayer
+
 
 var map_width: int = 0
 var map_height: int = 0
@@ -202,3 +207,75 @@ var cover_string_dictionary: Dictionary[String, Globals.Cover] = {
 	"Door": Globals.Cover.Door,
 	"Reinforced Wall": Globals.Cover.ReinforcedWall,
 }
+
+func get_control_point_dictionary() -> Dictionary[Vector2, String]:
+	var controlDictionary: Dictionary[Vector2, String] = {}
+	var tileSet: TileSet = control_point_map.tile_set
+
+	var i: int = 0
+	for row in tile_map:
+		var j: int = 0
+		for tile in row:
+			var currentCell = Vector2(j,i)
+			var cell: TileData = control_point_map.get_cell_tile_data(currentCell)
+			if cell != null:
+				var control_point: int = cell.terrain
+				var control_point_name: String = tileSet.get_terrain_name(0, control_point)
+				controlDictionary[currentCell] = control_point_name
+			j += 1
+		i += 1
+	return controlDictionary
+
+func get_control_point_faction_dictionary() -> Dictionary[Vector2, String]:
+	var controlFactionDictionary: Dictionary[Vector2, String] = {}
+	var tileSet: TileSet = point_faction_map.tile_set
+
+	var i: int = 0
+	for row in tile_map:
+		var j: int = 0
+		for tile in row:
+			var currentCell = Vector2(j,i)
+			var cell: TileData = point_faction_map.get_cell_tile_data(currentCell)
+			if cell != null:
+				var faction_point: int = cell.terrain
+				var faction_point_name: String = tileSet.get_terrain_name(0, faction_point)
+				controlFactionDictionary[currentCell] = faction_point_name
+			j += 1
+		i += 1
+	return controlFactionDictionary
+
+func get_unit_dictionary() -> Dictionary[Vector2, String]:
+	var unitDictionary: Dictionary[Vector2, String] = {}
+	var tileSet: TileSet = unit_layer.tile_set
+
+	var i: int = 0
+	for row in tile_map:
+		var j: int = 0
+		for tile in row:
+			var currentCell = Vector2(j,i)
+			var cell: TileData = unit_layer.get_cell_tile_data(currentCell)
+			if cell != null:
+				var unit: int = cell.terrain
+				var unit_name: String = tileSet.get_terrain_name(0, unit)
+				unitDictionary[currentCell] = unit_name
+			j += 1
+		i += 1
+	return unitDictionary
+
+func get_unit_faction_dictionary() -> Dictionary[Vector2, String]:
+	var unitFactionDictionary: Dictionary[Vector2, String] = {}
+	var tileSet: TileSet = unit_faction_layer.tile_set
+
+	var i: int = 0
+	for row in tile_map:
+		var j: int = 0
+		for tile in row:
+			var currentCell = Vector2(j,i)
+			var cell: TileData = unit_faction_layer.get_cell_tile_data(currentCell)
+			if cell != null:
+				var unit_faction: int = cell.terrain
+				var unit_faction_name: String = tileSet.get_terrain_name(0, unit_faction)
+				unitFactionDictionary[currentCell] = unit_faction_name
+			j += 1
+		i += 1
+	return unitFactionDictionary

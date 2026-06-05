@@ -3,7 +3,11 @@ extends Node2D
 
 var health: int = 100
 var moved: bool = false
-var faction: Globals.Factions = Globals.Factions.None
+var faction: Globals.Factions = Globals.Factions.None:
+	set(value):
+		faction = value
+		set_color(value)
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 @export var unit_type: Globals.Units
 @export var cost: int
@@ -23,3 +27,21 @@ func get_damage(target: Globals.Units) -> float:
 	var hp: float = float(health) / 10
 	var fullHp: int = ceil(hp)
 	return damage_table[target] * float(fullHp) / 10.0
+
+func set_color(value):
+	print("setting color to " + str(value))
+	match value:
+		Globals.Factions.None:
+			sprite_2d.modulate = Color.DARK_GRAY
+		Globals.Factions.Red:
+			sprite_2d.modulate = Color.RED
+		Globals.Factions.Blue:
+			sprite_2d.modulate = Color.BLUE
+		Globals.Factions.White:
+			sprite_2d.modulate = Color.WHITE
+		Globals.Factions.Yellow:
+			sprite_2d.modulate = Color.YELLOW
+		Globals.Factions.Green:
+			sprite_2d.modulate = Color.GREEN
+		Globals.Factions.Purple:
+			sprite_2d.modulate = Color.PURPLE

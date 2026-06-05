@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dq2nu0ffdw73g"]
+
+[ext_resource type="Script" uid="uid://c1242fcex03n4" path="res://scripts/control_point.gd" id="1_qnox6"]
+[ext_resource type="Texture2D" uid="uid://drsurj1n8xjhd" path="res://assets/Icons/factoryIcon.png" id="2_qnox6"]
+[ext_resource type="Texture2D" uid="uid://chgqpxehi7tfd" path="res://assets/Icons/2x2zone.png" id="3_ms0ib"]
+
+[node name="EntryControlPoint" type="Node2D" unique_id=1220668735]
+script = ExtResource("1_qnox6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1583435833]
+texture = ExtResource("2_qnox6")
+
+[node name="Zone" type="Sprite2D" parent="." unique_id=499435888]
+texture = ExtResource("3_ms0ib")

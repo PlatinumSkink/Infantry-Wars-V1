@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://ca0p4w1ggi5qj"]
+
+[ext_resource type="Script" uid="uid://c1242fcex03n4" path="res://scripts/control_point.gd" id="1_ytryh"]
+[ext_resource type="Texture2D" uid="uid://n7a0j7ekhxca" path="res://assets/Icons/houseIcon.png" id="2_ytryh"]
+[ext_resource type="Texture2D" uid="uid://chgqpxehi7tfd" path="res://assets/Icons/2x2zone.png" id="3_tvocv"]
+
+[node name="ForwardOperatingBase" type="Node2D" unique_id=1220668735]
+script = ExtResource("1_ytryh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1583435833]
+texture = ExtResource("2_ytryh")
+
+[node name="Zone" type="Sprite2D" parent="." unique_id=499435888]
+texture = ExtResource("3_tvocv")
