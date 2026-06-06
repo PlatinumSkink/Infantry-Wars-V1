@@ -2,10 +2,14 @@
 
 [ext_resource type="Script" uid="uid://vpes2426bhp6" path="res://scripts/generated_map.gd" id="1_h5ye1"]
 [ext_resource type="Texture2D" uid="uid://7ojey8136xtn" path="res://assets/Zone.png" id="2_l1oju"]
+[ext_resource type="Script" uid="uid://dsnmtstvpeai3" path="res://scripts/map_generator.gd" id="2_rk6ul"]
 [ext_resource type="Script" uid="uid://cxcixxmcsik5o" path="res://scripts/camera.gd" id="3_2cisp"]
 
 [node name="GeneratedMap" type="Node2D" unique_id=1884705217]
 script = ExtResource("1_h5ye1")
+
+[node name="MapGenerator" type="Node2D" parent="." unique_id=15671285]
+script = ExtResource("2_rk6ul")
 
 [node name="Zone" type="Sprite2D" parent="." unique_id=242972540]
 modulate = Color(1, 1, 1, 0.39215687)
