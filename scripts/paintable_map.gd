@@ -1,6 +1,8 @@
 class_name PaintableMap
 extends Node2D
 
+@export var factions: Array[Faction]
+
 @onready var tile_map_layer: TileMapLayer = $TerrainMap
 @onready var cover_map: TileMapLayer = $CoverMap
 @onready var cover_type_map: TileMapLayer = $CoverTypeMap
@@ -26,7 +28,6 @@ func get_array():
 		while cell != null:
 			var terrain: int = cell.terrain
 			var terrain_name: String = tileSet.get_terrain_name(0, terrain)
-			print("terrain_name: " + terrain_name)
 			row.append(terrain_name)
 			currentCell.x += 1
 			cell = tile_map_layer.get_cell_tile_data(currentCell)

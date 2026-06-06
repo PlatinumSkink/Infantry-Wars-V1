@@ -1,13 +1,18 @@
 class_name Unit
 extends Node2D
 
-var health: int = 100
+var health: int = 100:
+	set(value):
+		health = value
+		hp_box.set_health(value)
+		
 var moved: bool = false
 var faction: Globals.Factions = Globals.Factions.None:
 	set(value):
 		faction = value
 		set_color(value)
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var hp_box: Node2D = $HpBox
 
 @export var unit_type: Globals.Units
 @export var cost: int
@@ -29,7 +34,6 @@ func get_damage(target: Globals.Units) -> float:
 	return damage_table[target] * float(fullHp) / 10.0
 
 func set_color(value):
-	print("setting color to " + str(value))
 	match value:
 		Globals.Factions.None:
 			sprite_2d.modulate = Color.DARK_GRAY

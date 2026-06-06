@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://beqqio3j5uper"]
+
+[ext_resource type="Script" uid="uid://cn8ilafv0ex70" path="res://scripts/faction_manager.gd" id="1_wlbxl"]
+
+[node name="FactionManager" type="Node2D" unique_id=389857402]
+script = ExtResource("1_wlbxl")

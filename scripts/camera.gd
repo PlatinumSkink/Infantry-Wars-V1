@@ -105,11 +105,9 @@ func _input(event: InputEvent) -> void: # When an action happened.
 	if event.is_action_pressed("zoom_in"):
 		if camera_2d.zoom > zoom_minimum:
 			camera_2d.zoom -= zoom_speed
-			print("current zoom: " + str(camera_2d.zoom))
 			zoomed_viewport_size = viewport_size / camera_2d.zoom
 			
 	if event.is_action_pressed("zoom_out"):
 		if camera_2d.zoom < zoom_maximum:
 			camera_2d.zoom += zoom_speed
-			print("current zoom: " + str(camera_2d.zoom))
 			zoomed_viewport_size = viewport_size / camera_2d.zoom

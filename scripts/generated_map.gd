@@ -55,7 +55,7 @@ const SHOCK = preload("uid://djhs76ikk3xmc")
 const SNIPER = preload("uid://dhn37niv4hybq")
 const T_COPTER = preload("uid://ce4xd8xmu1tu2")
 
-
+signal clicked_on_nothing
 
 @onready var camera: TileCamera = $Camera
 
@@ -165,22 +165,36 @@ var cover_map = {}
 var unit_map = {}
 var unit_array = []
 var control_point_map = {}
+var faction_list_in_order: Array[Faction]
+var faction_index_dictionary: Dictionary[Globals.Factions, int]
 
 var pixels: int = 128
 
 @onready var zone: Sprite2D = $Zone
 
 const TEST_MAP = preload("uid://duvdr268m838v")
+const UNIT_TEST_MAP = preload("uid://db1e3j1mvfxul")
+const MAP_BASE = preload("uid://cqejh2ix2btba")
+
+var inactive: bool = false
 
 func _ready() -> void:
-	var instance: PaintableMap = TEST_MAP.instantiate()
+	var instance: PaintableMap = MAP_BASE.instantiate()
 	add_child(instance)
+	make_factions(instance.factions)
 	build_map(instance.get_array())
 	build_cover(instance.get_cover_dictionary())
 	build_control_points(instance.get_control_point_dictionary(), instance.get_control_point_faction_dictionary())
 	build_units(instance.get_unit_dictionary(), instance.get_unit_faction_dictionary())
 	instance.queue_free()
 	camera.setup(map_width_pixels, map_height_pixels)
+
+func make_factions(factions):
+	var i := 0
+	for faction in factions:
+		faction_list_in_order.append(faction)
+		faction_index_dictionary[faction.faction] = i
+		i += 1
 
 func build_map(map) -> void:
 	map_height = len(map)
@@ -222,6 +236,8 @@ func build_control_points(point_dictionary: Dictionary[Vector2, String], point_f
 		var resource = control_point_dictionary[string]
 		var faction_string = point_faction_dictionary[vector]
 		var faction = faction_dictionary[faction_string]
+		if !faction_index_dictionary.has(faction):
+			faction = Globals.Factions.None
 		var instance = resource.instantiate()
 		print(string + " at " + str(vector) + " faction is " + str(faction))
 		add_child(instance)
@@ -245,8 +261,10 @@ func build_units(vector_unit_dictionary: Dictionary[Vector2, String], unit_facti
 		var resource = unit_dictionary[string]
 		var faction_string = unit_faction_dictionary[vector]
 		var faction = faction_dictionary[faction_string]
+		if !faction_index_dictionary.has(faction):
+			continue # Don't put units of factions that aren't in the map.
 		var instance = resource.instantiate()
-		print(string + " at " + str(vector) + " faction is " + str(faction))
+		#print(string + " at " + str(vector) + " faction is " + str(faction))
 		add_child(instance)
 		var size = instance.size
 		instance.faction = faction
@@ -287,12 +305,16 @@ func is_in_bounds(x: int, y: int) -> bool:
 
 func _input(event: InputEvent) -> void: # When an action happened.
 	if event.is_action_pressed("click"):
+		var clicked_something: bool = false
 		var grid_pos = get_mouse_grid_coordinate()
 		print("grid_pos: " + str(grid_pos))
 		if is_in_bounds(grid_pos.x, grid_pos.y):
 			var terrain = tile_map[grid_pos.y][grid_pos.x]
 			print("terrain: " + str(terrain.terrain_type))
 			get_tile_cover(grid_pos)
+		
+		if !clicked_something:
+			clicked_on_nothing.emit()
 	
 	if event.is_action_pressed("escape"):
 		get_tree().quit()

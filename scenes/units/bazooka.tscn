@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://g3siinh7fn1u" path="res://scripts/unit.gd" id="1_nffi8"]
 [ext_resource type="Texture2D" uid="uid://d2bi6tpm63nib" path="res://assets/Units/bazooka.png" id="2_5wsrb"]
+[ext_resource type="PackedScene" uid="uid://e04l7r0d7p1p" path="res://scenes/info_screens/HPBox.tscn" id="3_ta1ya"]
 
 [node name="Bazooka" type="Node2D" unique_id=729160094]
 script = ExtResource("1_nffi8")
@@ -75,3 +76,6 @@ use_ammo_when_targetting = Dictionary[int, bool]({
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=439059989]
 texture = ExtResource("2_5wsrb")
+
+[node name="HpBox" parent="." unique_id=594723798 instance=ExtResource("3_ta1ya")]
+position = Vector2(44, 43)

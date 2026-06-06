@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://g3siinh7fn1u" path="res://scripts/unit.gd" id="1_nffi8"]
 [ext_resource type="Texture2D" uid="uid://drbpnpg2sd1jy" path="res://assets/Units/medic.png" id="2_7wein"]
+[ext_resource type="PackedScene" uid="uid://e04l7r0d7p1p" path="res://scenes/info_screens/HPBox.tscn" id="3_v1t61"]
 
 [node name="Medic" type="Node2D" unique_id=729160094]
 script = ExtResource("1_nffi8")
@@ -74,3 +75,6 @@ use_ammo_when_targetting = Dictionary[int, bool]({
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=439059989]
 texture = ExtResource("2_7wein")
+
+[node name="HpBox" parent="." unique_id=594723798 instance=ExtResource("3_v1t61")]
+position = Vector2(44, 43)

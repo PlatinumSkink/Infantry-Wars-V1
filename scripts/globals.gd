@@ -142,3 +142,11 @@ enum MovementType {
 	Treads,
 	Flying,
 }
+
+enum AIStyle {
+	Inexperienced,
+	Aggressive,
+	Defensive,
+	Balanced,
+	Veteran,
+}

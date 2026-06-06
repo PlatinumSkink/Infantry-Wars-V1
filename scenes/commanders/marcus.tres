@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Commander" format=3 uid="uid://bibfghyfajfhp"]
+
+[ext_resource type="Script" uid="uid://bsrb60te3o0m7" path="res://scripts/commander.gd" id="1_h7sev"]
+
+[resource]
+script = ExtResource("1_h7sev")
+commander_name = "Marcus"
+metadata/_custom_type_script = "uid://bsrb60te3o0m7"
