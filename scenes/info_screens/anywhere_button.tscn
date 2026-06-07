@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://ro50enygsnku"]
+
+[ext_resource type="Script" uid="uid://b060lcsy66n6v" path="res://scripts/anywhere_button.gd" id="1_1t6rj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1t6rj"]
+size = Vector2(326, 81)
+
+[node name="AnywhereButton" type="Node2D" unique_id=454837987]
+script = ExtResource("1_1t6rj")
+
+[node name="Button" type="Button" parent="." unique_id=1181919652]
+offset_right = 326.0
+offset_bottom = 82.0
+theme_override_font_sizes/font_size = 48
+text = "End Turn"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1961043391]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2023241964]
+position = Vector2(164, 40.5)
+shape = SubResource("RectangleShape2D_1t6rj")
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]

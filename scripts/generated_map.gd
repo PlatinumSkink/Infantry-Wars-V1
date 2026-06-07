@@ -28,7 +28,7 @@ const MAP_BASE = preload("uid://cqejh2ix2btba")
 var inactive: bool = false
 
 func _ready() -> void:
-	map_generator.build(MAP_BASE)
+	map_generator.build(TEST_MAP)
 	map_width = map_generator.map_width
 	map_height = map_generator.map_height
 	map_width_pixels = map_generator.map_width_pixels

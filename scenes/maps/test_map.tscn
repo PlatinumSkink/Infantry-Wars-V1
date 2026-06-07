@@ -1,12 +1,47 @@
 [gd_scene format=4 uid="uid://duvdr268m838v"]
 
 [ext_resource type="Script" uid="uid://cj4e246xs572y" path="res://scripts/paintable_map.gd" id="1_2s55i"]
+[ext_resource type="Script" uid="uid://bvtkq72agdwc1" path="res://scripts/faction.gd" id="2_ibx7c"]
 [ext_resource type="Texture2D" uid="uid://bpvhq17sgvd45" path="res://assets/PaintTerrain/Terrain/InfantryWarsTiles.png" id="2_o3n0h"]
 [ext_resource type="TileSet" uid="uid://c1y3765uc6u1q" path="res://tilesets/cover_tileset.tres" id="3_38prr"]
 [ext_resource type="Texture2D" uid="uid://vg2u7h7h58bg" path="res://assets/PaintTerrain/Cover/type_of_cover_map.png" id="4_a3b3n"]
 [ext_resource type="Texture2D" uid="uid://bvlxqw4byju4q" path="res://assets/PaintTerrain/Maps/base_types_new.png" id="5_pjele"]
 [ext_resource type="TileSet" uid="uid://b4neq28xxh656" path="res://tilesets/faction_tileset.tres" id="6_pjele"]
 [ext_resource type="Texture2D" uid="uid://dl78vb25ugvmp" path="res://assets/PaintTerrain/Maps/unit_map.png" id="7_ibx7c"]
+
+[sub_resource type="Resource" id="Resource_7iodv"]
+script = ExtResource("2_ibx7c")
+faction = 1
+metadata/_custom_type_script = "uid://bvtkq72agdwc1"
+
+[sub_resource type="Resource" id="Resource_00m6f"]
+script = ExtResource("2_ibx7c")
+faction = 2
+metadata/_custom_type_script = "uid://bvtkq72agdwc1"
+
+[sub_resource type="Resource" id="Resource_3se8m"]
+script = ExtResource("2_ibx7c")
+faction = 3
+metadata/_custom_type_script = "uid://bvtkq72agdwc1"
+
+[sub_resource type="Resource" id="Resource_auue8"]
+script = ExtResource("2_ibx7c")
+faction = 4
+metadata/_custom_type_script = "uid://bvtkq72agdwc1"
+
+[sub_resource type="Resource" id="Resource_yti6m"]
+script = ExtResource("2_ibx7c")
+faction = 5
+metadata/_custom_type_script = "uid://bvtkq72agdwc1"
+
+[sub_resource type="Resource" id="Resource_q2e4k"]
+script = ExtResource("2_ibx7c")
+faction = 6
+metadata/_custom_type_script = "uid://bvtkq72agdwc1"
+
+[sub_resource type="Resource" id="Resource_o5aat"]
+script = ExtResource("2_ibx7c")
+metadata/_custom_type_script = "uid://bvtkq72agdwc1"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_38prr"]
 texture = ExtResource("2_o3n0h")
@@ -993,6 +1028,7 @@ sources/0 = SubResource("TileSetAtlasSource_7iodv")
 
 [node name="TestMap" type="Node2D" unique_id=1221168322]
 script = ExtResource("1_2s55i")
+factions = Array[ExtResource("2_ibx7c")]([SubResource("Resource_7iodv"), SubResource("Resource_00m6f"), SubResource("Resource_3se8m"), SubResource("Resource_auue8"), SubResource("Resource_yti6m"), SubResource("Resource_q2e4k"), SubResource("Resource_o5aat")])
 metadata/_custom_type_script = "uid://cj4e246xs572y"
 
 [node name="TerrainMap" type="TileMapLayer" parent="." unique_id=36845964]

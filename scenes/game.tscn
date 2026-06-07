@@ -2,10 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://bedpgwfvmyevf" path="res://scenes/generated_map.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://bvogcfwnufxf2" path="res://scripts/game.gd" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://32miax3jmm5g" path="res://scenes/info_screens/anywhere_menu.tscn" id="3_lnu2h"]
 
 [node name="Game" type="Node2D" unique_id=1217454222]
 script = ExtResource("1_yqjtg")
 
 [node name="GeneratedMap" parent="." unique_id=1884705217 instance=ExtResource("1_uwrxv")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=127244761]
+
+[node name="AnywhereMenu" parent="CanvasLayer" unique_id=506279458 instance=ExtResource("3_lnu2h")]
+visible = false
 
 [connection signal="clicked_on_nothing" from="GeneratedMap" to="." method="_on_generated_map_clicked_on_nothing"]

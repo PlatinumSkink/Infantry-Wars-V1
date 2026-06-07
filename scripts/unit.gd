@@ -42,7 +42,7 @@ func set_color(value):
 		Globals.Factions.Blue:
 			sprite_2d.modulate = Color.BLUE
 		Globals.Factions.White:
-			sprite_2d.modulate = Color.WHITE
+			sprite_2d.modulate.v = 2.5
 		Globals.Factions.Yellow:
 			sprite_2d.modulate = Color.YELLOW
 		Globals.Factions.Green:

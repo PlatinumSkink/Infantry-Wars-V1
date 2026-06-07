@@ -1,3 +1,10 @@
 [gd_scene format=3 uid="uid://32miax3jmm5g"]
 
+[ext_resource type="Script" uid="uid://b3wxmt5tau42b" path="res://scripts/anywhere_menu.gd" id="1_3kgum"]
+[ext_resource type="Texture2D" uid="uid://dexgvoy0whuhq" path="res://assets/PaintTerrain/singleWhitePixel.png" id="1_u3333"]
+
 [node name="AnywhereMenu" type="Node2D" unique_id=506279458]
+script = ExtResource("1_3kgum")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1622562079]
+texture = ExtResource("1_u3333")
