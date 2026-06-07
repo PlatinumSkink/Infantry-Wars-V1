@@ -45,6 +45,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	if Globals.controlMode != Globals.ControlMode.PlayerTurn:
+		zone.visible = false
+		return
 	var mousePos: Vector2 = get_global_mouse_position()
 	var x = floorf(mousePos.x / pixels)
 	var y = floorf(mousePos.y / pixels)

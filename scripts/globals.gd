@@ -150,3 +150,14 @@ enum AIStyle {
 	Balanced,
 	Veteran,
 }
+
+enum ControlMode {
+	MainMenu,
+	PlayerTurn,
+	EnemyTurn,
+	UnitSelected,
+	UnitMenu,
+	AnywhereMenu,
+}
+
+var controlMode : ControlMode

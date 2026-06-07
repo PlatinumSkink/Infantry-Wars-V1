@@ -52,28 +52,77 @@ func _ready() -> void:
 
 func _commanders_button_pressed():
 	print("commanders")
+	if Globals.controlMode != Globals.ControlMode.AnywhereMenu:
+		return
 	commanders_button_pressed.emit()
+	get_viewport().set_input_as_handled()
 
 func _status_button():
 	print("status")
+	if Globals.controlMode != Globals.ControlMode.AnywhereMenu:
+		return
 	status_button_pressed.emit()
+	get_viewport().set_input_as_handled()
 
 func _options_button():
 	print("options")
+	if Globals.controlMode != Globals.ControlMode.AnywhereMenu:
+		return
 	options_button_pressed.emit()
+	get_viewport().set_input_as_handled()
 
 func _save_button():
 	print("save")
+	if Globals.controlMode != Globals.ControlMode.AnywhereMenu:
+		return
 	save_button_pressed.emit()
+	get_viewport().set_input_as_handled()
 
 func _end_turn_button():
 	print("end turn")
+	if Globals.controlMode != Globals.ControlMode.AnywhereMenu:
+		return
 	end_turn_button_pressed.emit()
+	get_viewport().set_input_as_handled()
 	
 func show_menu():
+	if Globals.controlMode != Globals.ControlMode.PlayerTurn:
+		return
+	
+	Globals.controlMode = Globals.ControlMode.AnywhereMenu
 	visible = true
 	position = get_viewport().get_mouse_position() 
-	if position.x + size.x > get_viewport().size.x:
+	if position.x + size.x > get_window().content_scale_size.x:
 		position.x -= size.x
-	if position.y + size.y > get_viewport().size.y:
+	if position.y + size.y > get_window().content_scale_size.y:
 		position.y -= size.y
+
+func hide_menu():
+	Globals.controlMode = Globals.ControlMode.PlayerTurn
+	visible = false
+
+func _input(event: InputEvent) -> void: # When an action happened.
+	if Globals.controlMode != Globals.ControlMode.AnywhereMenu:
+		return
+	#if event.is_action_pressed("click") && mouse_not_in_menu():
+	#	hide_menu()
+	if event.is_action_pressed("undo"):
+		hide_menu()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if Globals.controlMode != Globals.ControlMode.AnywhereMenu:
+		return
+	if event.is_action_pressed("click") && mouse_not_in_menu():
+		hide_menu()
+
+func mouse_not_in_menu() -> bool:
+	var mousePosition: Vector2 = get_viewport().get_mouse_position()
+	if mousePosition.x < position.x:
+		return true
+	if mousePosition.y < position.y:
+		return true
+	if mousePosition.x > position.x + size.x:
+		return true
+	if mousePosition.y > position.y + size.y:
+		return true
+	return false

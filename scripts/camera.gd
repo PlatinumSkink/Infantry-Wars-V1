@@ -35,6 +35,8 @@ func setup(map_width: int, map_height: int) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Globals.controlMode != Globals.ControlMode.PlayerTurn:
+		return
 	var viewportMousePos: Vector2 = get_viewport().get_mouse_position()
 	
 	if map_wider_than_viewport():
