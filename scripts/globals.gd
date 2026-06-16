@@ -135,7 +135,14 @@ func GetDirectionName(direction: Direction) -> String:
 			return "SW"
 	assert(false, "not applicable direction")
 	return ""
-	
+
+var NSEW: Array[Vector2] = [
+	Vector2(0,1),
+	Vector2(0,-1),
+	Vector2(1,0),
+	Vector2(-1,0),
+]
+
 enum MovementType {
 	Foot,
 	Wheel,

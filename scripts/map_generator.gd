@@ -256,6 +256,7 @@ func build_units(vector_unit_dictionary: Dictionary[Vector2, String], unit_facti
 		get_parent().add_child(instance)
 		var size = instance.size
 		instance.faction = faction
+		instance.z_index = 3
 		unit_map[vector] = instance
 		unit_array.append(instance)
 		if size == 1:

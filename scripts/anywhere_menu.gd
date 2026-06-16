@@ -104,8 +104,6 @@ func hide_menu():
 func _input(event: InputEvent) -> void: # When an action happened.
 	if Globals.controlMode != Globals.ControlMode.AnywhereMenu:
 		return
-	#if event.is_action_pressed("click") && mouse_not_in_menu():
-	#	hide_menu()
 	if event.is_action_pressed("undo"):
 		hide_menu()
 

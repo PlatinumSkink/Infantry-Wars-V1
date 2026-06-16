@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmnhbklexr2yy"
-path="res://.godot/imported/Attack.png-2c16a2ced40a31d423a0305fa6ba0269.ctex"
+uid="uid://dkubpl4ax0nwk"
+path="res://.godot/imported/arrowhead.png-694675ae4a4b75b52603b484e9982866.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Attack.png"
-dest_files=["res://.godot/imported/Attack.png-2c16a2ced40a31d423a0305fa6ba0269.ctex"]
+source_file="res://assets/pathfinding/arrowhead.png"
+dest_files=["res://.godot/imported/arrowhead.png-694675ae4a4b75b52603b484e9982866.ctex"]
 
 [params]
 

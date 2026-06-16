@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dal8fw4n3vnop"
-path="res://.godot/imported/Crawl.png-21f063d8c3dae57712b9aa3e09b8d986.ctex"
+uid="uid://dwoppmpcsevnb"
+path="res://.godot/imported/corner.png-2f4f0162b572e4c1a86c0b4cfeff4ae8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Crawl.png"
-dest_files=["res://.godot/imported/Crawl.png-21f063d8c3dae57712b9aa3e09b8d986.ctex"]
+source_file="res://assets/pathfinding/corner.png"
+dest_files=["res://.godot/imported/corner.png-2f4f0162b572e4c1a86c0b4cfeff4ae8.ctex"]
 
 [params]
 

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ceg6mp31q7ya8"]
+
+[ext_resource type="Texture2D" uid="uid://dsb1bvj50h5o4" path="res://assets/pathfinding/Move.png" id="1_1j2st"]
+
+[node name="MoveTile" type="Node2D" unique_id=1707280537]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=24086491]
+texture = ExtResource("1_1j2st")
+centered = false
