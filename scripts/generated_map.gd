@@ -9,7 +9,7 @@ var map_height: int = 0
 var map_width_pixels: int = 0
 var map_height_pixels: int = 0
 var tile_map = []
-var cover_map = {}
+var cover_map: Dictionary[Vector2, Cover] = {}
 var unit_map = {}
 var unit_array = []
 var control_point_map = {}
@@ -138,14 +138,16 @@ func select_unit(unit: Unit, pos: Vector2):
 		if !alreadyVisited.has(thisSpot):
 			movement_instances[thisSpot].visible = true
 		alreadyVisited[thisSpot] = true
+		var previousTile: Terrain =  tile_map[thisSpot.y][thisSpot.x]
 
 		for direction in Globals.NSEW:
 			var checkedPosition = thisSpot + direction
 			if !is_in_bounds(checkedPosition.x, checkedPosition.y):
 				continue
 			var tile: Terrain = tile_map[checkedPosition.y][checkedPosition.x]
-			var highest: float = get_move_movement_cost(tile, unit)
-			var distanceHere: float = distanceTo[thisSpot] + tile.movement_cost[unit.movement_type]
+			var highest: float = get_move_movement_cost(previousTile, tile, unit)
+			var coverMoveCost: float = get_cover_movement_cost(thisSpot, direction)
+			var distanceHere: float = distanceTo[thisSpot] + highest + coverMoveCost
 			if distanceHere > float(total_movement):
 				continue
 			if alreadyChecked.has(checkedPosition):
@@ -158,10 +160,21 @@ func select_unit(unit: Unit, pos: Vector2):
 				spotList.append(checkedPosition)
 				alreadyChecked[checkedPosition] = true
 
-func get_move_movement_cost(tile: Terrain, unit: Unit) -> float:
-	if tile.leave_cost.has(unit.movement_type):
-		return maxf(tile.movement_cost[unit.movement_type], tile.leave_cost[unit.movement_type])
+func get_move_movement_cost(previousTile: Terrain, tile: Terrain, unit: Unit) -> float:
+	if previousTile.leave_cost.has(unit.movement_type):
+		return maxf(tile.movement_cost[unit.movement_type], previousTile.leave_cost[unit.movement_type])
 	return tile.movement_cost[unit.movement_type]
+
+func get_cover_movement_cost(from: Vector2, direction: Vector2) -> float:
+	from *= 2 # Double the coordinates, then add one.
+	from += Vector2(1,1) # No matter the position, the covers are counted from +1+1. 1, 3, 5, 7, 9
+	var coverSpot: Vector2 = from + direction
+	if cover_map.has(coverSpot):
+		var cover: Cover = cover_map[coverSpot]
+		if cover.blocks:
+			return 99
+		return cover_map[coverSpot].movement_cost
+	return 0
 
 func draw_arrow():
 	pass
@@ -175,8 +188,11 @@ func astar(from: Vector2, to: Vector2) -> Array[Vector2]:
 	var distanceTo: Dictionary[Vector2, float] = {}
 	var spotList: Array[Vector2] = []
 	var previousNode: Dictionary[Vector2, Vector2] = {}
+	var nodes: Dictionary[Vector2, Node] = {}
+	
 	
 	spotList.append(from)
+	
 	distanceTo[from] = 0
 	while len(spotList) > 0:
 		var thisSpot = spotList[0]

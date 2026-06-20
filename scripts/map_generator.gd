@@ -157,7 +157,7 @@ var map_height: int = 0
 var map_width_pixels: int = 0
 var map_height_pixels: int = 0
 var tile_map = []
-var cover_map = {}
+var cover_map: Dictionary[Vector2, Cover] = {}
 var unit_map = {}
 var unit_array = []
 var control_point_map = {}
@@ -168,7 +168,6 @@ var pixels: int = 128
 
 func build(map: Resource):
 	var instance: PaintableMap = map.instantiate()
-	var parent = get_parent()
 	add_child(instance)
 	make_factions(instance.factions)
 	build_map(instance.get_array())
