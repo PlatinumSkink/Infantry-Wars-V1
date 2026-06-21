@@ -23,6 +23,8 @@ var pixels: int = 128
 
 @onready var zone: Sprite2D = $Zone
 @onready var map_generator: Node2D = $MapGenerator
+@onready var arrow_placer: Node2D = $ArrowPlacer
+
 
 const TEST_MAP = preload("uid://duvdr268m838v")
 const UNIT_TEST_MAP = preload("uid://db1e3j1mvfxul")
@@ -89,8 +91,13 @@ func is_in_bounds(x: int, y: int) -> bool:
 func _input(event: InputEvent) -> void: # When an action happened.
 	if event.is_action_pressed("escape"):
 		get_tree().quit()
-	if Globals.controlMode != Globals.ControlMode.PlayerTurn:
-		return
+	match Globals.controlMode:
+		Globals.ControlMode.PlayerTurn:
+			player_turn_click(event)
+		Globals.ControlMode.UnitSelected:
+			unit_selected_input(event)
+
+func player_turn_click(event: InputEvent):
 	if event.is_action_pressed("click"):
 		var clicked_something: bool = false
 		var grid_pos = get_mouse_grid_coordinate()
@@ -117,9 +124,15 @@ func get_tile_cover(grid_pos):
 			var cover: Cover = cover_map[final_pos]
 			print("Has " + cover.cover_name + " in direction " + direction)
 
+var selectedUnit: Unit
+var selectedUnitLocation: Vector2
+
 func select_unit(unit: Unit, pos: Vector2):
 	print("selected " + str(unit.unit_type))
 	Globals.controlMode = Globals.ControlMode.UnitSelected
+	
+	selectedUnit = unit
+	selectedUnitLocation = pos
 	
 	var total_movement = unit.movement
 	var movement_type = unit.movement_type
@@ -138,16 +151,14 @@ func select_unit(unit: Unit, pos: Vector2):
 		if !alreadyVisited.has(thisSpot):
 			movement_instances[thisSpot].visible = true
 		alreadyVisited[thisSpot] = true
-		var previousTile: Terrain =  tile_map[thisSpot.y][thisSpot.x]
 
 		for direction in Globals.NSEW:
 			var checkedPosition = thisSpot + direction
 			if !is_in_bounds(checkedPosition.x, checkedPosition.y):
 				continue
-			var tile: Terrain = tile_map[checkedPosition.y][checkedPosition.x]
-			var highest: float = get_move_movement_cost(previousTile, tile, unit)
-			var coverMoveCost: float = get_cover_movement_cost(thisSpot, direction)
-			var distanceHere: float = distanceTo[thisSpot] + highest + coverMoveCost
+			var terrainMoveCost: float = get_move_movement_cost(thisSpot, checkedPosition, movement_type)
+			var coverMoveCost: float = get_cover_movement_cost(thisSpot, direction, movement_type)
+			var distanceHere: float = distanceTo[thisSpot] + terrainMoveCost + coverMoveCost
 			if distanceHere > float(total_movement):
 				continue
 			if alreadyChecked.has(checkedPosition):
@@ -160,12 +171,16 @@ func select_unit(unit: Unit, pos: Vector2):
 				spotList.append(checkedPosition)
 				alreadyChecked[checkedPosition] = true
 
-func get_move_movement_cost(previousTile: Terrain, tile: Terrain, unit: Unit) -> float:
-	if previousTile.leave_cost.has(unit.movement_type):
-		return maxf(tile.movement_cost[unit.movement_type], previousTile.leave_cost[unit.movement_type])
-	return tile.movement_cost[unit.movement_type]
+func get_move_movement_cost(position1: Vector2, position2: Vector2, movementType: Global.MovementType) -> float:
+	var previousTile: Terrain =  tile_map[position1.y][position1.x]
+	var tile: Terrain = tile_map[position2.y][position2.x]
+	if previousTile.leave_cost.has(movementType):
+		return maxf(tile.movement_cost[movementType], previousTile.leave_cost[movementType])
+	return tile.movement_cost[movementType]
 
-func get_cover_movement_cost(from: Vector2, direction: Vector2) -> float:
+func get_cover_movement_cost(from: Vector2, direction: Vector2, movementType: Global.MovementType) -> float:
+	if movementType == Global.MovementType.Flying:
+		return 0 # flying units are unaffected
 	from *= 2 # Double the coordinates, then add one.
 	from += Vector2(1,1) # No matter the position, the covers are counted from +1+1. 1, 3, 5, 7, 9
 	var coverSpot: Vector2 = from + direction
@@ -179,24 +194,91 @@ func get_cover_movement_cost(from: Vector2, direction: Vector2) -> float:
 func draw_arrow():
 	pass
 
+func unit_selected_input(event: InputEvent):
+	if event.is_action_pressed("click"):
+		var mouse_grid_coordinate = get_mouse_grid_coordinate()
+		print("trying to astar to " + str(mouse_grid_coordinate) + "!")
+		var path = astarWithTerrain(selectedUnitLocation, mouse_grid_coordinate, selectedUnit.movement_type)
+		print("path is " + str(path))
+		arrow_placer.placeArrows(path)
 
-
-func astar(from: Vector2, to: Vector2) -> Array[Vector2]:
+func astarWithTerrain(from: Vector2, to: Vector2, movementType: Global.MovementType) -> Array[Vector2]:		
 	var path: Array[Vector2] = []
-	var alreadyVisited: Dictionary[Vector2, bool] = {}
-	var alreadyChecked: Dictionary[Vector2, bool] = {}
-	var distanceTo: Dictionary[Vector2, float] = {}
-	var spotList: Array[Vector2] = []
-	var previousNode: Dictionary[Vector2, Vector2] = {}
-	var nodes: Dictionary[Vector2, Node] = {}
 	
-	
-	spotList.append(from)
-	
-	distanceTo[from] = 0
-	while len(spotList) > 0:
-		var thisSpot = spotList[0]
-		spotList.remove_at(0)
+	if from == to || !is_in_bounds(from.x, from.y) || !is_in_bounds(to.x, to.y):
+		path.append(from)
+		return path
 		
+	var nodes: Dictionary[Vector2, MoveNode] = {}
+	var nodeList: Array[MoveNode] = []
+	var firstNode: MoveNode = MoveNode.new(from, to, 0, from) # We reach the last node when the previous node is the same as this one.
+	
+	nodes[from] = firstNode
+	nodeList.append(firstNode)
+		
+	while len(nodeList) > 0:
+		var node = nodeList[0]
+		nodeList.remove_at(0)
+		#print("checking " + str(node.position) + ". distance here: " + str(node.steps_here) + ". distance to goal: " + str(node.distance_to_goal) + ". " + str(nodeList.size()) + " items left")
+		if node.position == to:
+			path = get_astar_path(to, nodes)
+			break
+		
+		for direction in Globals.NSEW:
+			var checkedPosition = node.position + direction
+			if !is_in_bounds(checkedPosition.x, checkedPosition.y):
+				continue
+			var terrainMoveCost: float = get_move_movement_cost(node.position, checkedPosition, movementType)
+			var coverMoveCost: float = get_cover_movement_cost(node.position, direction, movementType)
+			var totalNodeCost = node.steps_here + terrainMoveCost + coverMoveCost
+			if nodes.has(checkedPosition):
+				#print("we've already been to " + str(checkedPosition) + "! previous distance here is " + str(nodes[checkedPosition].steps_here))
+				if nodes[checkedPosition].steps_here <= totalNodeCost:
+					#print("new path is " + str(totalNodeCost) + " and longer!")
+					continue
+				#print("new path is " + str(totalNodeCost) + " and shorter!")
+				
+			
+			var newNode = MoveNode.new(checkedPosition, to, totalNodeCost, node.position)
+			nodes[checkedPosition] = newNode
+			#print("adding " + str(checkedPosition) + " to nodes with distance " + str(totalNodeCost))
+			if !nodeListHas(nodeList, checkedPosition):
+				#print("adding to array!")
+				nodeList.append(newNode)
+			else:
+				nodeList = nodeListReplace(nodeList, checkedPosition, newNode)
+		
+		nodeList.sort_custom(func(a: MoveNode, b: MoveNode): return a.getComputeDistance() < b.getComputeDistance())
 	
 	return path
+
+func get_astar_path(goal: Vector2, nodes: Dictionary[Vector2, MoveNode]) -> Array[Vector2]:
+	var path: Array[Vector2]
+	var node: MoveNode = nodes[goal]
+	print("we found it")
+	while true:
+		var thisPosition: Vector2 = node.position
+		path.append(thisPosition)
+		var previousNode: MoveNode = nodes[node.previous_node]
+		if thisPosition == previousNode.position:
+			break
+		node = nodes[node.previous_node]
+	path.reverse()
+	return path
+
+func nodeListHas(nodeList: Array[MoveNode], checkedPosition: Vector2) -> bool:
+	for node in nodeList:
+		if node.position == checkedPosition:
+			return true
+	return false
+
+func nodeListReplace(nodeList: Array[MoveNode], checkedPosition: Vector2, newNode: MoveNode) -> Array[MoveNode]:
+	var index = -1
+	for i in range(nodeList.size()):
+		var node: MoveNode = nodeList[i]
+		if node.position == checkedPosition:
+			index = i
+			break
+	nodeList.remove_at(index)
+	nodeList.append(newNode)
+	return nodeList

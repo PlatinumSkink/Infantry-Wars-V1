@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://7ojey8136xtn" path="res://assets/Zone.png" id="2_l1oju"]
 [ext_resource type="Script" uid="uid://dsnmtstvpeai3" path="res://scripts/map_generator.gd" id="2_rk6ul"]
 [ext_resource type="Script" uid="uid://cxcixxmcsik5o" path="res://scripts/camera.gd" id="3_2cisp"]
+[ext_resource type="Script" uid="uid://dsxwljfku6dxg" path="res://scripts/arrow_placer.gd" id="4_52r4u"]
 
 [node name="GeneratedMap" type="Node2D" unique_id=1884705217]
 script = ExtResource("1_h5ye1")
@@ -16,6 +17,9 @@ modulate = Color(1, 1, 1, 0.39215687)
 z_index = 1
 texture = ExtResource("2_l1oju")
 centered = false
+
+[node name="ArrowPlacer" type="Node2D" parent="." unique_id=1790216187]
+script = ExtResource("4_52r4u")
 
 [node name="Camera" type="Node2D" parent="." unique_id=419798172]
 script = ExtResource("3_2cisp")

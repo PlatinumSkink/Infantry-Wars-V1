@@ -1,6 +1,8 @@
 class_name Global
 extends Node
 
+var pixels: int = 128
+
 enum Factions {
 	None,
 	Red,
@@ -94,7 +96,7 @@ func GetDirectionCoordinateString(direction: String) -> Vector2:
 	assert(false, "not applicable direction")
 	return Vector2(0,0)
 
-func GetDirectionCoordinate(direction: Direction) -> Vector2:
+func GetCoverDirectionCoordinate(direction: Direction) -> Vector2:
 	match direction:
 		Direction.Left:  
 			return Vector2(0,1)
@@ -112,6 +114,28 @@ func GetDirectionCoordinate(direction: Direction) -> Vector2:
 			return Vector2(0,0)
 		Direction.SW:  
 			return Vector2(0,2)
+	assert(false, "not applicable direction")
+	return Vector2(0,0)
+
+func GetDirection(direction: Direction) -> Vector2:
+	match direction:
+		Direction.Left:  
+			return Vector2(-1,0)
+		Direction.Right: 
+			return Vector2(1,0)
+		Direction.Up:
+			print("previous direction was up")
+			return Vector2(0,-1)
+		Direction.Down: 
+			return Vector2(0,1)
+		Direction.SE:  
+			return Vector2(1,1)
+		Direction.NE:  
+			return Vector2(1,-1)
+		Direction.NW:  
+			return Vector2(-1,-1)
+		Direction.SW:  
+			return Vector2(-1,1)
 	assert(false, "not applicable direction")
 	return Vector2(0,0)
 
@@ -168,3 +192,11 @@ enum ControlMode {
 }
 
 var controlMode : ControlMode
+
+enum ZIndex {
+	TerrainLayer = 0,
+	CoverLayer = 1000,
+	ControlPointLayer = 2000,
+	ArrowLayer = 3000,
+	UnitLayer = 4000,
+}
