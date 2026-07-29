@@ -95,3 +95,6 @@ func turnedLeft(previousDirection: Globals.Direction, pos: Vector2, nextPos: Vec
 		Globals.Direction.Down:
 			return direction == Globals.Direction.Right
 	return false
+
+func placeArrow(pos: Vector2):
+	pass

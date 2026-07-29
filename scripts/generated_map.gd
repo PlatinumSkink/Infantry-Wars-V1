@@ -64,20 +64,24 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if Globals.controlMode != Globals.ControlMode.PlayerTurn:
-		zone.visible = false
-		return
-	var mousePos: Vector2 = get_global_mouse_position()
-	var x = floorf(mousePos.x / pixels)
-	var y = floorf(mousePos.y / pixels)
-	if is_in_bounds(x, y):
-		zone.visible = true
-		zone.position = Vector2(x * pixels, y * pixels)
+	if Globals.controlMode == Globals.ControlMode.PlayerTurn:	
+		var mousePos: Vector2 = get_global_mouse_position()
+		var x = floorf(mousePos.x / pixels)
+		var y = floorf(mousePos.y / pixels)
+		if is_in_bounds(x, y):
+			zone.visible = true
+			zone.position = Vector2(x * pixels, y * pixels)
+		else:
+			zone.visible = false
+			draw_arrow()
 	else:
 		zone.visible = false
 	if Globals.controlMode != Globals.ControlMode.UnitSelected:
-		draw_arrow()
-	
+		var mousePos: Vector2 = get_global_mouse_position()
+		var x = floorf(mousePos.x / pixels)
+		var y = floorf(mousePos.y / pixels)
+		arrow_placer.placeArrow(Vector2(x,y))
+
 func get_mouse_grid_coordinate() -> Vector2:
 	var mousePos: Vector2 = get_global_mouse_position()
 	var x = floorf(mousePos.x / pixels)
@@ -161,6 +165,8 @@ func select_unit(unit: Unit, pos: Vector2):
 			var distanceHere: float = distanceTo[thisSpot] + terrainMoveCost + coverMoveCost
 			if distanceHere > float(total_movement):
 				continue
+			if enemyUnitHere(checkedPosition):
+				continue
 			if alreadyChecked.has(checkedPosition):
 				if distanceTo[checkedPosition] > distanceHere: # Replace with movement cost.
 					distanceTo[checkedPosition] = distanceHere
@@ -191,16 +197,40 @@ func get_cover_movement_cost(from: Vector2, direction: Vector2, movementType: Gl
 		return cover_map[coverSpot].movement_cost
 	return 0
 
+func enemyUnitHere(pos: Vector2) -> bool:
+	if unit_map.has(pos):
+		var unit: Unit = unit_map[pos]
+		var faction: Globals.Factions = unit.faction
+		
+	return false
+
+func hide_available_move_tiles():
+	for y in tile_map.size():
+		var row = tile_map[y]
+		for x in row.size():
+			var pos = Vector2(x,y) 
+			var instance = movement_instances[pos]
+			instance.visible = false
+
 func draw_arrow():
 	pass
 
 func unit_selected_input(event: InputEvent):
 	if event.is_action_pressed("click"):
-		var mouse_grid_coordinate = get_mouse_grid_coordinate()
-		print("trying to astar to " + str(mouse_grid_coordinate) + "!")
-		var path = astarWithTerrain(selectedUnitLocation, mouse_grid_coordinate, selectedUnit.movement_type)
-		print("path is " + str(path))
-		arrow_placer.placeArrows(path)
+		var mouse_grid_coordinate: Vector2 = get_mouse_grid_coordinate()
+		if movement_instances[mouse_grid_coordinate].visible:
+			print("trying to astar to " + str(mouse_grid_coordinate) + "!")
+			var path = astarWithTerrain(selectedUnitLocation, mouse_grid_coordinate, selectedUnit.movement_type)
+			print("path is " + str(path))
+			arrow_placer.placeArrows(path)
+		else:
+			arrow_placer.hideArrows()
+			hide_available_move_tiles()
+			Globals.controlMode = Globals.ControlMode.PlayerTurn
+	if event.is_action_pressed("undo"):
+		arrow_placer.hideArrows()
+		hide_available_move_tiles()
+		Globals.controlMode = Globals.ControlMode.PlayerTurn
 
 func astarWithTerrain(from: Vector2, to: Vector2, movementType: Global.MovementType) -> Array[Vector2]:		
 	var path: Array[Vector2] = []
